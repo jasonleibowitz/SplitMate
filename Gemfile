@@ -40,6 +40,8 @@ end
 
 gem "paperclip", "~> 4.1"
 
+gem 'bcrypt', '~> 3.1.7'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
