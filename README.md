@@ -13,4 +13,4 @@ Coming Soon.
 
 ### ERD
 
-![ERD v1](/images/ERD.png)
+![ERD v1](/images/ERD_v2.png)
