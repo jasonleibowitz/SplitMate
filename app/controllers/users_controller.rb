@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_authentication, only: [:index, :show, :edit, :update, :destroy]
 
   def index
-
+    @users = User.all
   end
 
   def show

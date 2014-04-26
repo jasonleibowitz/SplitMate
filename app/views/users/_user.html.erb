@@ -1,0 +1,11 @@
+<p> <%= user.first_name %></p>
+<p> <%= user.last_name %></p>
+<p> <%= user.email %></p>
+<% if user.apartment != nil %>
+  <p><%= user.apartment.name %></p>
+  <p><%= user.apartment.zipcode %></p>
+<% end %>
+
+<% if user.apartment == nil %>
+  <%= link_to 'Add an Apartment', new_apartment_path %>
+<% end %>
