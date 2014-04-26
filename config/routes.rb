@@ -8,6 +8,6 @@ SplitmateApp::Application.routes.draw do
   get '/logout' => 'sessions#destroy'
   post '/sessions' => 'sessions#create'
 
-  root to: 'users#show'
+  root to: 'users#index'
 
 end
