@@ -7,6 +7,8 @@ SplitmateApp::Application.routes.draw do
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
   post '/sessions' => 'sessions#create'
+  get '/apartments/:id/addroommates' => 'apartments#add_roommates'
+  post '/saveroommate' => 'users#save_roommate'
 
   root to: 'users#index'
 

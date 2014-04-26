@@ -47,9 +47,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def save_roommate
+    @apartment = current_user.apartment
+    @user = User.new(roommate_params)
+    @user.points_balance = 0
+    @user.points_lifetime = 0
+    @user.completed_week_points = 0
+    @user.total_week_points = 0
+    @user.admin = false
+    @user.password = 'password'
+    @user.password_confirmation = 'password'
+    @user.apartment = @apartment
+    @user.save!
+    redirect_to @apartment
+  end
+
   private
   def user_params
     return params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def roommate_params
+    return params.require(:user).permit(:first_name, :last_name, :email)
   end
 
 end

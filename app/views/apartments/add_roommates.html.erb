@@ -1,0 +1,16 @@
+<h1>Roommate <%= @num %>:</h1>
+
+<%= form_for @user, url: { action: "save_roommate", controller: "users" } do |f| %>
+
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.submit :submit %>
+
+<% end %>

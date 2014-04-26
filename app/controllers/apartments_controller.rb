@@ -6,6 +6,7 @@ class ApartmentsController < ApplicationController
 
   def show
     @apartment = Apartment.find(params[:id])
+    @roommates = @apartment.users
   end
 
   def new
@@ -35,6 +36,12 @@ class ApartmentsController < ApplicationController
     @apartment = Apartment.find(params[:id])
     @apartment.destroy
     redirect_to root_path
+  end
+
+  def add_roommates
+    @apartment = current_user.apartment
+    @num = @apartment.users.length + 1
+    @user = User.new
   end
 
   private

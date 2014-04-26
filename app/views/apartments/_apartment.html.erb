@@ -1,3 +1,10 @@
 <h1><%= apartment.name %></h1>
 <p><%= apartment.street %>, <%= apartment.apt %></p>
 <p><%= apartment.zipcode %></p>
+
+<h2>Roommates:</h2>
+<% @roommates.each do |roommate| %>
+<ul>
+  <li><%= link_to "#{roommate.first_name} #{roommate.last_name}", user_path(roommate) %></li>
+</ul>
+<% end %>

@@ -2,7 +2,7 @@
 <p> <%= user.last_name %></p>
 <p> <%= user.email %></p>
 <% if user.apartment != nil %>
-  <p><%= user.apartment.name %></p>
+  <p><%= link_to user.apartment.name, apartment_path(@user.apartment) %></p>
   <p><%= user.apartment.zipcode %></p>
 <% end %>
 
