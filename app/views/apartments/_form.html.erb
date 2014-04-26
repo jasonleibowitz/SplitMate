@@ -1,0 +1,17 @@
+<%= form_for @apartment do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :street %>
+  <%= f.text_field :street %>
+
+  <%= f.label :apt %>
+  <%= f.text_field :apt %>
+
+  <%= f.label :zipcode %>
+  <%= f.number_field :zipcode %>
+
+  <%= f.submit :submit %>
+
+<% end %>
