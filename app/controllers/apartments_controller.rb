@@ -15,6 +15,7 @@ class ApartmentsController < ApplicationController
   def create
     @apartment = Apartment.new(apartment_params)
     @apartment.save
+    current_user.apartment = @apartment
     redirect_to @apartment
   end
 
