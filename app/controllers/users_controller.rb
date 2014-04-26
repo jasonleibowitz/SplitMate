@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user.total_week_points = 0
     @user.admin = false
     @user.save
-
+    session[:user_id] = @user.id
     redirect_to @user
   end
 
