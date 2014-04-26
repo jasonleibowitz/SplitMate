@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425195303) do
+ActiveRecord::Schema.define(version: 20140426161343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,17 +29,24 @@ ActiveRecord::Schema.define(version: 20140425195303) do
     t.integer "value"
   end
 
+  create_table "chore_histories", force: true do |t|
+    t.string   "name"
+    t.integer  "points_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "comments"
+    t.integer  "user_id"
+    t.integer  "apartment_id"
+  end
+
   create_table "chores", force: true do |t|
     t.string   "name"
     t.integer  "points_value"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "date_completed"
-    t.text     "comments"
-    t.boolean  "rebuy"
     t.integer  "roommate_id"
     t.integer  "apartment_id"
+    t.date     "due_date"
   end
 
   create_table "users", force: true do |t|

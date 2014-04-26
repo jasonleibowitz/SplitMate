@@ -1,0 +1,3 @@
+class ChoreHistoriesController < ApplicationController
+
+end

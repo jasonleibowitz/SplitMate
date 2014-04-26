@@ -38,6 +38,10 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+group :development do
+  gem "rails-erd"
+end
+
 gem "paperclip", "~> 4.1"
 
 gem 'bcrypt', '~> 3.1.7'
