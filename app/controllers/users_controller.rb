@@ -22,7 +22,9 @@ class UsersController < ApplicationController
     @user.completed_week_points = 0
     @user.total_week_points = 0
     @user.admin = false
-    @user.save
+    if @user.save
+      UserMailer.welcome_user(@user).deliver
+    end
     session[:user_id] = @user.id
     redirect_to @user
   end
@@ -58,7 +60,9 @@ class UsersController < ApplicationController
     @user.password = 'password'
     @user.password_confirmation = 'password'
     @user.apartment = @apartment
-    @user.save!
+    if @user.save!
+      UserMailer.roommate_welcome(@user).deliver
+    end
     redirect_to @apartment
   end
 
