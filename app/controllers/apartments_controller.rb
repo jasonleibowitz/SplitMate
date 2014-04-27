@@ -32,6 +32,10 @@ class ApartmentsController < ApplicationController
   def update
     @apartment = Apartment.find(params[:id])
     @apartment.update(apartment_params)
+    if @apartment.avatar_file_name == nil
+      @apartment.default_avatar = Google.find_latlon(@apartment.street, @apartment.zipcode)
+      @apartment.save!
+    end
     redirect_to @apartment
   end
 
