@@ -15,5 +15,6 @@ describe User do
   it { should have_many :chores }
   it { should have_many :chore_histories }
   it { should belong_to :apartment }
+  it { should have_many :approvals }
 
 end
