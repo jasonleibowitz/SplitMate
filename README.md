@@ -39,6 +39,7 @@ Coming Soon.
 * Gems
 	* [Paperclip](https://github.com/thoughtbot/paperclip)
 	* [Figaro](https://github.com/laserlemon/figaro)
+	* [HTTParty](https://github.com/jnunemaker/httparty)
 * Testing Platforms
 	* [RSpec](https://github.com/rspec/rspec-rails)
 	* [Should-Matchers](https://github.com/thoughtbot/shoulda-matchers)
