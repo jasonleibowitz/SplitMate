@@ -16,3 +16,5 @@ SplitmateApp::Application.configure do
     authentication:       'plain',
     enable_starttls_auto: true  }
   end
+
+Paperclip.options[:command_path] = "/usr/local/bin/"

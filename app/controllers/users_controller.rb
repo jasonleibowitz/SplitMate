@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    return params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    return params.require(:user).permit(:first_name, :last_name, :email, :avatar, :password, :password_confirmation)
   end
 
   def roommate_params

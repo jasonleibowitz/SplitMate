@@ -43,7 +43,7 @@ group :development do
   gem "rails-erd"
 end
 
-gem "paperclip", "~> 4.1"
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 gem 'bcrypt', '~> 3.1.7'
 

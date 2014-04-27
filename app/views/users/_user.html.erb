@@ -1,8 +1,8 @@
-<p> <%= user.first_name %></p>
-<p> <%= user.last_name %></p>
+<%= image_tag user.avatar.url(:medium) %>
+<p><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></p>
 <p> <%= user.email %></p>
 <% if user.apartment != nil %>
-  <p><%= link_to user.apartment.name, apartment_path(@user.apartment) %></p>
+  <p><%= link_to user.apartment.name, apartment_path(user.apartment) %></p>
   <p><%= user.apartment.zipcode %></p>
 <% end %>
 
@@ -10,4 +10,5 @@
   <%= link_to 'Add an Apartment', new_apartment_path %>
 <% end %>
 
-<%= link_to 'edit profile', edit_user_path %>
+<%= link_to 'edit profile', edit_user_path(user) %>
+<hr>

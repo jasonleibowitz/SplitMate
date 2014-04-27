@@ -1,20 +1,23 @@
 <%= form_for(@user) do |f| %>
 
 <%= f.label :first_name %>
-<%= f.text_field :first_name %>
+<%= f.text_field :first_name %> <br>
 
 <%= f.label :last_name %>
-<%= f.text_field :last_name %>
+<%= f.text_field :last_name %> <br>
 
 <%= f.label :email %>
-<%= f.text_field :email %>
+<%= f.text_field :email %> <br>
+
+<%= f.label 'Profile Pic' %>
+<%= f.file_field :avatar %> <br>
 
 <%= f.label :password %>
-<%= f.password_field :password %>
+<%= f.password_field :password %> <br>
 
 <%= f.label :password_confirmation %>
-<%= f.password_field :password_confirmation %>
+<%= f.password_field :password_confirmation %> <br>
 
-<%= f.submit :submit %>
+<%= f.submit :submit %> <br>
 
 <% end %>
