@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :apartment
   has_many :chores
   has_many :chore_histories
+  has_many :approvals, dependent: :destroy
 
   has_secure_password
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "images/:style/missing.png"

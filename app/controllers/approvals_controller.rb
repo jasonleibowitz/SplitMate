@@ -1,3 +1,48 @@
 class ApprovalsController < ApplicationController
 
+	### The approvals are an aspect of a completed chore, therefor they do not have their own view/show/edit pages, but rather work 100% through AJAX.
+
+	### Because of this, it makes more sense to respond with a JSON object of the chore_history object that was voted on, not the actual vote object itself.  This is because approval votes can be deleted, in which case there would be nothing to return.  It also DRY's up Javascript on frontend views because we work with only one object. ###
+
+	def create
+  	@approval = Approval.new(approval_params)
+  	@approval.user_id = current_user.id
+  	@approval.save
+  	@chore_history = @approval.chore_history
+  		respond_to do |format|
+      format.html
+      format.json { render json: @chore_history.to_json }
+    end
+  end
+
+  def update
+  	@approval = Approval.find(params[:id])
+  	@approval.update(approval_params)
+  	@chore_history = @approval.chore_history
+  	respond_to do |format|
+      format.html
+      format.json { render json: @chore_history.to_json }
+    end
+  end
+
+  def destroy
+  	approval = Approval.find(params[:id])
+  	@chore_history = approval.chore_history
+  	if @approval.destroy 
+  		@chore_history.calculate_score
+  		respond_to do |format|
+	      format.html
+	      format.json { render json: @chore_history.to_json }
+	    end
+  	elsif 
+  		@message = "error couldn't destroy"
+  		return @message
+  	end
+  end
+
+  private
+  def approval_params
+  	params.require(:approval).permit(:chore_id, :value)
+  end
+
 end
