@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
   end
 
   def new
@@ -31,6 +30,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    require_authorization
+
   end
 
   def update

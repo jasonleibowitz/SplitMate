@@ -21,5 +21,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_admin
   end
 
+  def require_authorization
+    redirect_to current_user unless ( current_user == @user )
+    flash[:authorization_error] = 'You do not have permission to view that page'
+  end
+
 
 end
