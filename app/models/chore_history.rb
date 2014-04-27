@@ -13,6 +13,6 @@ class ChoreHistory < ActiveRecord::Base
   	end
   	self.points_value = total
   	self.save
-  end	
+  end
 
 end
