@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+div.avatar-wrap {
+  display: block;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+img.avatar {
+  width: 150px;
+}
