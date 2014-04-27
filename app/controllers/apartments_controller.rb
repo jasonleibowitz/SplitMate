@@ -15,6 +15,9 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
+    if @apartment.avatar_file_name == nil
+      @apartment.default_avatar = Google.find_latlon(@apartment.street, @apartment.zipcode)
+    end
     @apartment.save
     @user = current_user
     @user.apartment = @apartment
@@ -29,6 +32,10 @@ class ApartmentsController < ApplicationController
   def update
     @apartment = Apartment.find(params[:id])
     @apartment.update(apartment_params)
+    if @apartment.avatar_file_name == nil
+      @apartment.default_avatar = Google.find_latlon(@apartment.street, @apartment.zipcode)
+      @apartment.save!
+    end
     redirect_to @apartment
   end
 
@@ -46,7 +53,7 @@ class ApartmentsController < ApplicationController
 
   private
   def apartment_params
-    return params.require(:apartment).permit(:name, :street, :apt, :zipcode)
+    return params.require(:apartment).permit(:name, :street, :apt, :zipcode, :avatar)
   end
 
 end
