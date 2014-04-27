@@ -2,10 +2,10 @@
 
 ### Team Members
 
-* [Verner D'souza](verner.dz@gmail.com)
-* [Jason Leibowitz](jasonaleibowitz@gmail.com)
-* [Stephen Marsh](stephenforpresident@gmail.com)
-* [Eric Resnick](eres805@gmail.com)
+* [Verner D'souza](mailto:verner.dz@gmail.com)
+* [Jason Leibowitz](mailto:jasonaleibowitz@gmail.com)
+* [Stephen Marsh](mailto:stephenforpresident@gmail.com)
+* [Eric Resnick](mailto:eres805@gmail.com)
 
 ---
 
