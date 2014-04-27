@@ -48,6 +48,8 @@ class ChoresController < ApplicationController
     @chore = Chore.find(params[:id])
     @chore.user = nil
     @chore.save!
+    @user.update_points(@chore.points_value)
+    @user.save!
     redirect_to @user
   end
 

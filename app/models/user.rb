@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 5 }, :on => :create
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+
+  def update_points(points_value)
+    self.points_balance += points_value
+    self.points_lifetime += points_value
+    self.completed_week_points += points_value
+    self.total_week_points += points_value
+  end
+
 end
