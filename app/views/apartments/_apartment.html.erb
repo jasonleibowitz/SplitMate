@@ -1,3 +1,11 @@
+<div class="avatar-wrap">
+    <% if apartment.avatar_file_name == nil %>
+      <%= image_tag apartment.default_avatar, class: 'avatar' %>
+    <% else %>
+      <%= image_tag apartment.avatar.url(:medium), class: 'avatar' %>
+    <% end %>
+</div>
+
 <h1><%= apartment.name %></h1>
 <p><%= apartment.street %>, <%= apartment.apt %></p>
 <p><%= apartment.zipcode %></p>

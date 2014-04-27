@@ -11,16 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427023847) do
+ActiveRecord::Schema.define(version: 20140427034714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "apartments", force: true do |t|
-    t.string  "name"
-    t.string  "street"
-    t.string  "apt"
-    t.integer "zipcode"
+    t.string   "name"
+    t.string   "street"
+    t.string   "apt"
+    t.integer  "zipcode"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "default_avatar"
+    t.float    "latitute"
+    t.float    "longitude"
   end
 
   create_table "approvals", force: true do |t|
