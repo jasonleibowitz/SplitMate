@@ -43,6 +43,14 @@ class ChoresController < ApplicationController
     redirect_to @user
   end
 
+  def complete_chore
+    @user = current_user
+    @chore = Chore.find(params[:id])
+    @chore.user = nil
+    @chore.save!
+    redirect_to @user
+  end
+
   private
 
   def chore_params
