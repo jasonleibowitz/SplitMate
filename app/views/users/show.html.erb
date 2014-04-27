@@ -6,4 +6,5 @@
   <%= chore.name %>
   <%= chore.due_date %>
   <%= chore.points_value %>
+  <%= link_to 'chore completed', "/completechore/#{chore.id}" %>
 <% end %>
