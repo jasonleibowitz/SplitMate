@@ -6,7 +6,7 @@
     <li> <%= chore.name %> </li>
     <li> Assigned to: <%= link_to "#{chore.user.first_name} #{chore.user.last_name}", user_path(chore.user) %></li>
     <li> <%= chore.points_value %> </li>
-    <li> <%= chore.due_date %> </li>
+    <li> <%= chore.current_due_date %> </li>
     <li> <%= link_to 'edit chore', edit_chore_path(@apartment) %> </li>
     <li> <%= link_to 'assign chore', "/assignchore/#{chore.id}"  %>
   <% end %>
