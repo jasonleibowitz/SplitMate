@@ -50,7 +50,6 @@ describe Approval do
       expect(@windex_peephole.approval_points).to eq(2)
       expect(@windex_peephole.approvals.length).to eq(4)
       expect(@windex_peephole.approval_ratio).to eq(50)
->>>>>>> approvals_feature
     end
   end
 
