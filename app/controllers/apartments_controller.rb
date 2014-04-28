@@ -53,7 +53,7 @@ class ApartmentsController < ApplicationController
 
   private
   def apartment_params
-    return params.require(:apartment).permit(:name, :street, :apt, :zipcode, :avatar)
+    return params.require(:apartment).permit(:name, :street, :apt, :zipcode, :avatar, :avatar_file_name)
   end
 
 end
