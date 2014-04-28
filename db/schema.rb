@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428035723) do
+ActiveRecord::Schema.define(version: 20140428040813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140428035723) do
     t.integer  "user_id"
     t.integer  "apartment_id"
     t.integer  "approval_points"
+    t.integer  "approval_ratio"
   end
 
   create_table "chores", force: true do |t|

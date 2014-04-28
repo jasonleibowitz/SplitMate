@@ -11,7 +11,7 @@ class ChoreHistory < ActiveRecord::Base
   	self.approvals.each do |approval|
   		total += approval.value
   	end
-  	self.points_value = total
+  	self.approval_points = total
   	self.save
   end
 
