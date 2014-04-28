@@ -1,8 +1,10 @@
-<table border=1>
-<% @leaderboard.each do |roommate| %>
-<tr>
-  <td><div class="avatar-wrap-thumb"><%= image_tag roommate.avatar.url(:thumb) %></div></td>
-  <td><%= roommate.points_balance %></td>
-</tr>
-<% end %>
-</table>
+
+
+	<% @leaderboard.each do |roommate| %>
+	<div class="leader-container">
+	  <div class="avatar-wrap-leaderboard"><%= image_tag roommate.avatar.url(:thumb) %></div>
+	  <div class="leader-points-balance"><%= roommate.points_balance %></div>
+  </div>
+	<% end %>
+
+
