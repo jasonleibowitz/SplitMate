@@ -28,6 +28,7 @@ class ChoresController < ApplicationController
   def update
     @chore = Chore.find(params[:id])
     @chore.update(chore_params)
+    redirect_to @chore.apartment
   end
 
   def destroy
