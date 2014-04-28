@@ -24,6 +24,7 @@ describe Approval do
       
        @approval_1 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: -1)
       
+       # @windex_peephole.reload
        expect(@windex_peephole.approval_points).to eq(-1)
        # expect(@approval_1.chore_history).to eq(@windex_peephole)
     end
