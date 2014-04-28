@@ -41,3 +41,7 @@ div.apt-header {
 img.avatar {
   width: 150px;
 }
+
+h3.apt-header {
+  text-align: center;
+}
