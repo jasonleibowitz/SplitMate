@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20140428204411) do
     t.text     "comments"
     t.integer  "user_id"
     t.integer  "apartment_id"
+    t.integer  "chore_id"
     t.integer  "approval_points"
     t.integer  "approval_ratio"
-    t.integer  "chore_id"
     t.boolean  "approved"
   end
 

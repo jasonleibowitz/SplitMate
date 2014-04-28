@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require foundation_and_overrides
+
  *= require_tree .
  */
 div.avatar-wrap {
@@ -18,7 +20,7 @@ div.avatar-wrap {
   text-align: center;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 30px auto 0 auto;
 }
 
 div.avatar-wrap-thumb {
@@ -29,6 +31,11 @@ div.avatar-wrap-thumb {
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
+}
+
+div.apt-header {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 img.avatar {
