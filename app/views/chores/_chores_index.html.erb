@@ -1,0 +1,16 @@
+
+<% @chores.each do |chore| %>
+<ul>
+<div>
+  <% if chore.user == nil %>
+    <li> <%= chore.name %> </li>
+    <li> <%= chore.points_value %> </li>
+    <li> <%= chore.due_date %> </li>
+    <li> <%= link_to 'edit chore', edit_chore_path(@apartment) %> </li>
+    <li> <%= link_to 'assign chore', "/assignchore/#{chore.id}"  %>
+  <% end %>
+
+</div>
+</ul>
+<% end %>
+

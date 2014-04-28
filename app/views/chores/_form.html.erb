@@ -1,0 +1,13 @@
+<%= form_for([@apartment, @chore]) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :points_value %>
+  <%= f.number_field :points_value %>
+
+  <%= f.date_select :due_date %>
+
+  <%= f.submit :submit %>
+
+<% end %>
