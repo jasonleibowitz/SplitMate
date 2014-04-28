@@ -5,6 +5,7 @@ class Chore < ActiveRecord::Base
   has_many :chore_histories
 
 	def complete_chore(comments)
+
 		@user = self.user
 
     # Give user points for completing chore
@@ -15,6 +16,8 @@ class Chore < ActiveRecord::Base
 		self.user = nil
 		self.save
 
+    # Mark chore's current_due_date as nil
+    self.current_due_date = nil
 
 		# Create a new chore history after user completed chore
     @chore_history = ChoreHistory.new
@@ -25,7 +28,7 @@ class Chore < ActiveRecord::Base
     @chore_history.user = @user
     @chore_history.apartment = @user.apartment
     @chore_history.save!
-  end
 
+  end
 
 end

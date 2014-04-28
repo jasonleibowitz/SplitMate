@@ -6,7 +6,8 @@
   <%= f.label :points_value %>
   <%= f.number_field :points_value %>
 
-  <%= f.date_select :due_date %>
+  <%= f.label :due_date %>
+  <%= f.select :due_date, Date::DAYNAMES %>
 
   <%= f.submit :submit %>
 
