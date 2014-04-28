@@ -5,7 +5,11 @@
 <%= link_to 'Create a chore', new_apartment_chore_path(@apartment) %>
 
 
-<h1>All Chores</h1>
-
+<h1>Chore Marketplace</h1>
 
 <%= render :partial => '/chores/chores_index' %>
+
+<h2>Assigned Chores</h2>
+
+<%= render :partial => '/chores/assigned_chores_index' %>
+
