@@ -14,6 +14,7 @@ class ChoreHistory < ActiveRecord::Base
   	self.approval_points = total
     self.approval_ratio = (self.approval_points / self.approvals.length)
   	self.save
+    self.reload
   end
 
 end
