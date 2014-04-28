@@ -1,14 +1,14 @@
 
 <% @chores.each do |chore| %>
-<ul>
+<ul class="no-bullet">
 <div>
   <% if chore.user == nil %>
     <%= content_tag_for(:div, chore) %>
-    <li> <%= chore.name %> </li>
+    <li><h5><%= chore.name %></h5></li>
     <li> Points: <%= chore.points_value %> </li>
     <li> Due: <%= chore.due_date %> </li>
-    <li> <%= link_to 'edit chore', edit_chore_path(@apartment) %> </li>
-    <li> <%= link_to 'assign chore', "/assignchore/#{chore.id}"  %>
+    <li> <%= link_to 'edit chore', edit_chore_path(chore) %> </li>
+    <li> <%= link_to 'accept challenge', "/assignchore/#{chore.id}"  %>
   <% end %>
 
 </div>
