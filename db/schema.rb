@@ -59,7 +59,8 @@ ActiveRecord::Schema.define(version: 20140428204411) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "apartment_id"
-    t.date     "due_date"
+    t.string   "due_date"
+    t.date     "current_due_date"
   end
 
   create_table "users", force: true do |t|

@@ -5,7 +5,7 @@
 <% @chores.each do |chore| %>
   <div id=<%= dom_id(chore) %>>
     <%= chore.name %>
-    <%= chore.due_date %>
+    <%= chore.current_due_date %>
     <%= chore.points_value %>
     <%= link_to 'chore completed', "/completeddetails/#{chore.id}", remote: true %>
   </div>

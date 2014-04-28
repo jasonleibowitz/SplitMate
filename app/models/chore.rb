@@ -5,6 +5,7 @@ class Chore < ActiveRecord::Base
   has_many :chore_histories
 
 	def complete_chore(comments)
+
 		@user = self.user
 
     # Give user points for completing chore
@@ -15,6 +16,8 @@ class Chore < ActiveRecord::Base
 		self.user = nil
 		self.save
 
+    # Mark chore's current_due_date as nil
+    self.current_due_date = nil
 
 		# Create a new chore history after user completed chore
     @chore_history = ChoreHistory.new
@@ -31,5 +34,14 @@ class Chore < ActiveRecord::Base
 
   end
 
+  def overdue_chore?
+    if self.current_due_date == Date.today
+      @user = self.user
+      @user.dollar_balance -= self.points_value
+      @user.save!
+      self.user = nil
+      self.save!
+    end
+  end
 
 end
