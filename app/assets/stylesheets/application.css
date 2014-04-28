@@ -21,6 +21,16 @@ div.avatar-wrap {
   margin: 0 auto;
 }
 
+div.avatar-wrap-thumb {
+  display: block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
 img.avatar {
   width: 150px;
 }
