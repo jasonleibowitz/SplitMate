@@ -7,6 +7,7 @@
 <% if user.apartment != nil %>
   <p><%= link_to user.apartment.name, apartment_path(user.apartment) %></p>
   <p><%= user.apartment.zipcode %></p>
+  <p>My Points Balance: <%= user.points_balance %></p>
 <% end %>
 
 <% if user.apartment == nil %>
