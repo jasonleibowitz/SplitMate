@@ -1,10 +1,22 @@
 <%= render @user %>
 
-<h2>My Chores</h2>
+<h2 id="chore-header">My Chores</h2>
 
 <% @chores.each do |chore| %>
-  <%= chore.name %>
-  <%= chore.due_date %>
-  <%= chore.points_value %>
-  <%= link_to 'chore completed', "/completechore/#{chore.id}" %>
+  <div id=<%= dom_id(chore) %>>
+    <%= chore.name %>
+    <%= chore.due_date %>
+    <%= chore.points_value %>
+    <%= link_to 'chore completed', "/completeddetails/#{chore.id}", remote: true %>
+  </div>
 <% end %>
+
+<h2 id="completed-chores">My Completed Chores</h2>
+  <% @completed_chores.each do |completed_chore| %>
+    <div id=<%= dom_id(completed_chore) %>>
+      <%= completed_chore.name %> <br>
+      Points: <%= completed_chore.points_value %> <br>
+      Comments: <%= completed_chore.comments %> <br>
+      Completed: <%= completed_chore.created_at.to_time.strftime "%b %e, %Y" %>
+    </div> <br>
+  <% end %>

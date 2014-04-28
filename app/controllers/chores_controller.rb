@@ -43,10 +43,19 @@ class ChoresController < ApplicationController
     redirect_to @user
   end
 
+  def chore_completed_details
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
+  end
+
   def complete_chore
-    @user = current_user
-    @chore = Chore.find(params[:id])
-    @chore.complete_chore
+    @chore = Chore.find(params[:chore_id])
+    @user = @chore.user
+    require_authorization
+    @comments = params[:comments]
+    @chore.complete_chore(@comments)
     redirect_to @user
   end
 

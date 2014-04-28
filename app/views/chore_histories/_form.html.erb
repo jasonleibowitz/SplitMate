@@ -1,9 +1,10 @@
-<%= form_for @chore_history do |f| %>
+<%= form_tag 'completechore', method: 'post', class: "complete-form" do %>
 
-  <%= f.label :comments %>
-  <%= f.text_area :comments %>
+  <%= label_tag 'comments' %>
+  <%= text_area_tag 'comments' %>
 
-  <%= f.hidden_field :name,  %>
+  <%= hidden_field_tag 'chore_id', params[:id] %>
 
+  <%= submit_tag :submit %>
 
 <% end %>

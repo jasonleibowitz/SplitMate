@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140428042032) do
+=======
+ActiveRecord::Schema.define(version: 20140428134450) do
+>>>>>>> c9fb9f9005203186658049307ddaf126aed4be1f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +48,15 @@ ActiveRecord::Schema.define(version: 20140428042032) do
     t.text     "comments"
     t.integer  "user_id"
     t.integer  "apartment_id"
+<<<<<<< HEAD
     t.integer  "approval_points"
     t.integer  "approval_ratio"
+=======
+    t.integer  "chore_id"
+>>>>>>> c9fb9f9005203186658049307ddaf126aed4be1f
   end
+
+  add_index "chore_histories", ["chore_id"], name: "index_chore_histories_on_chore_id", using: :btree
 
   create_table "chores", force: true do |t|
     t.string   "name"

@@ -1,0 +1,8 @@
+var id = <%= params[:id] %>;
+var form = $('<%=j render :partial => '/chore_histories/form', :locals => { :chore_id => params[:id] } %>');
+
+if ($('#chore_'+id).children().hasClass('complete-form')){
+
+} else {
+  $('#chore_'+id).append(form);
+}

@@ -2,6 +2,7 @@ class ChoreHistory < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :chore
+  belongs_to :apartment
   has_many :approvals, dependent: :destroy
 
   def calculate_score
@@ -14,5 +15,8 @@ class ChoreHistory < ActiveRecord::Base
     self.approval_ratio = (self.approval_points.to_f / self.approvals.length.to_f) * 100
   	self.save
   end
+
+  private
+
 
 end
