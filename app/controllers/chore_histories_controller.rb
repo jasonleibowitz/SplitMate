@@ -13,6 +13,7 @@ class ChoreHistoriesController < ApplicationController
   end
 
   def create
+    @chore = Chore.find(session[:chore_id])
     @chore_history = ChoreHistory.new(chore_history_params)
     @chore_history.save!
   end

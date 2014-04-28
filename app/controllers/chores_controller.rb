@@ -43,13 +43,35 @@ class ChoresController < ApplicationController
     redirect_to @user
   end
 
+  def chore_completed_details
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
+  end
+
   def complete_chore
-    @user = current_user
-    @chore = Chore.find(params[:id])
+    @chore = Chore.find(params[:chore_id])
+    @user = @chore.user
+    require_authorization
+    # Mark chore as unassigned
     @chore.user = nil
     @chore.save!
+
+    # Give user points for completing chore
     @user.update_points(@chore.points_value)
     @user.save!
+
+    # Create a new chore history after user completed chore
+    @chore_history = ChoreHistory.new
+    @chore_history.comments = params[:comments]
+    @chore_history.chore = @chore
+    @chore_history.name = @chore.name
+    @chore_history.points_value = @chore.points_value
+    @chore_history.user = @user
+    @chore_history.apartment = @user.apartment
+    @chore_history.save!
+
     redirect_to @user
   end
 

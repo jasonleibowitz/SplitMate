@@ -3,6 +3,7 @@
 <ul>
 <div>
   <% if chore.user == nil %>
+    <%= content_tag_for(:div, chore) %>
     <li> <%= chore.name %> </li>
     <li> <%= chore.points_value %> </li>
     <li> <%= chore.due_date %> </li>

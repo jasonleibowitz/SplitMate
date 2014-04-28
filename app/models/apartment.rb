@@ -2,6 +2,7 @@ class Apartment < ActiveRecord::Base
 
   has_many :users
   has_many :chores
+  has_many :chore_histories
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   validates :name, :street, :apt, :zipcode, presence: true

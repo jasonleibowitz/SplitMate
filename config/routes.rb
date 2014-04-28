@@ -12,7 +12,8 @@ SplitmateApp::Application.routes.draw do
   get '/apartments/:id/addroommates' => 'apartments#add_roommates'
   post '/saveroommate' => 'users#save_roommate'
   get '/assignchore/:id/' => 'chores#assign_chore'
-  get '/completechore/:id' => 'chores#complete_chore'
+  get '/completeddetails/:id' => 'chores#chore_completed_details'
+  post '/users/completechore' => 'chores#complete_chore'
 
   root to: 'users#index'
 
