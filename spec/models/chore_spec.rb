@@ -9,7 +9,8 @@ describe Chore do
 		@chore = Chore.new(name: "Clean the toilet", points_value: 25, user_id: @vern.id, apartment_id: @ga.id, due_date: Date.today)
 
 		expect(@vern.points_balance).to eq(0)
-		@chore.complete_chore
+		@chore.complete_chore("test comment")
+		@chore.reload
 		@vern.reload
 		expect(@vern.points_balance).to eq(25)
 		end

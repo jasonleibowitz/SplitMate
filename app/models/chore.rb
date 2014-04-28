@@ -24,7 +24,11 @@ class Chore < ActiveRecord::Base
     @chore_history.points_value = self.points_value
     @chore_history.user = @user
     @chore_history.apartment = @user.apartment
+    @chore_history.approval_points = 0
+    @chore_history.approval_ratio = 0
+    @chore_history.approved = true
     @chore_history.save!
+
   end
 
 

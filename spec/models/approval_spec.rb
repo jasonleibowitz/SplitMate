@@ -5,7 +5,8 @@ describe Approval do
   it { should belong_to :user }
   it { should belong_to :chore_history }
   # need to install callback shoulda matchers before this will pass
-	# it { should callback(:calculate_score).after(:save) }
+	it { should callback(:calculate_score).after(:save) }
+  it { should callback(:check_ratio).after(:save) }
 
 
 	 before :each do
@@ -25,7 +26,7 @@ describe Approval do
       
       @approval_1 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: -1)
       
-      # @windex_peephole.reload      
+      @windex_peephole.reload      
       expect(@windex_peephole.approval_points).to eq(-1)
       # expect(@approval_1.chore_history).to eq(@windex_peephole)
     end
@@ -35,7 +36,7 @@ describe Approval do
       @approval_3 = Approval.create(user_id: @eric.id, chore_history_id: @windex_peephole.id, value: -1)
       @approval_4 = Approval.create(user_id: @bob.id, chore_history_id: @windex_peephole.id, value: 1)
 
-      # @windex_peephole.reload
+      @windex_peephole.reload
       expect(@windex_peephole.approval_points).to eq(-2)
       expect(@windex_peephole.approvals.length).to eq(4)
       expect(@windex_peephole.approval_ratio).to eq(-50)
@@ -46,7 +47,7 @@ describe Approval do
       @approval_3 = Approval.create(user_id: @eric.id, chore_history_id: @windex_peephole.id, value: 1)
       @approval_4 = Approval.create(user_id: @bob.id, chore_history_id: @windex_peephole.id, value: -1)
 
-      # @windex_peephole.reload
+      @windex_peephole.reload
       expect(@windex_peephole.approval_points).to eq(2)
       expect(@windex_peephole.approvals.length).to eq(4)
       expect(@windex_peephole.approval_ratio).to eq(50)

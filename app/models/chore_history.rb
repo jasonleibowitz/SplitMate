@@ -16,6 +16,19 @@ class ChoreHistory < ActiveRecord::Base
   	self.save
   end
 
+  def check_ratio
+    if self.approval_ratio < 0 && self.approved 
+      remaining_votes = (self.apartment.users.length - 1) - self.approvals.length
+      deduction = self.points_value * (-1)
+      if (self.approval_points + remaining_votes) < 0
+        self.user.update_points(deduction)
+        self.approved = false
+        self.save
+      end 
+    end      
+
+  end
+
   private
 
 
