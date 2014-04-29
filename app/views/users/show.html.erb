@@ -6,7 +6,7 @@
       </div>
       <div class="apt-header">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-        <h3><%= @user.apartment.name %></h3>
+        <h3><%= link_to @user.apartment.name, apartment_path(@user.apartment) %></h3>
         <h6>Points Balance: <%= @user.points_balance %> | Dollar Balance: $<%= @user.dollar_balance %></h6>
         <div class="small-space"></div>
         <%= link_to 'edit profile', edit_user_path(@user), class: 'button tiny edit-user' %>
