@@ -1,16 +1,20 @@
 <dl class="voting" data-accordion>
 	<% i = 0 %> 
 	<% @completed_chores.each do |chore| %>
-  <div class="vote-item">
-    <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>"><%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   </a> <%= chore.points_value %> pts
+  <div class="vote-item" id="<%= dom_id(chore) %>">
+    <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>"><%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   </a> <span id=""><%= chore.approval_points %></span> pts
 
     <!-- the voting buttons -->
   	<div class="vote-button">
-	    <%= form_tag('/posts', remote: true) do %>
-				<%= submit_tag ("u")%>
+  		<%= form_for(Approval.new, format: :js, remote: true) do |f| %>
+  			<%= f.hidden_field :chore_history_id, value: chore.id %>
+	  		<%= f.hidden_field :value, value: 1 %>
+				<%= f.submit ("u")%>
 			<% end %>
-			<%= form_tag('/posts', remote: true) do %>
-		  	<%= submit_tag ("d")%>
+			<%= form_for(Approval.new, format: :js, remote: true) do |f| %>
+				<%= f.hidden_field :chore_history_id, value: chore.id %>
+				<%= f.hidden_field :value, value: -1 %>
+		  	<%= f.submit ("d")%>
 			<% end %>
 		</div>
 		<!-- end voting buttons -->

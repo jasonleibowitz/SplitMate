@@ -10,9 +10,9 @@ class ApprovalsController < ApplicationController
   	@approval.save
   	@chore_history = @approval.chore_history
   		respond_to do |format|
-      format.html
-      format.json { render json: @chore_history.to_json }
-    end
+        format.html
+        format.js { render 'new'}
+      end
   end
 
   def update
@@ -42,7 +42,7 @@ class ApprovalsController < ApplicationController
 
   private
   def approval_params
-  	params.require(:approval).permit(:chore_id, :value)
+  	params.require(:approval).permit(:chore_history_id, :value)
   end
 
 end

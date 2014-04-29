@@ -19,8 +19,6 @@ $(document).ready(
   console.log("loaded bro")
 
 
-
-
   );
 
 $(function(){ $(document).foundation(); });
