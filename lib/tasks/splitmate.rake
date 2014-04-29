@@ -42,18 +42,23 @@ task :check_overdue_chores => :environment do
   @unassigned_chores = Chore.where(user_id: nil)
 
   @unassigned_chores.each do |unassigned_chore|
+
+  # If chore apartment's chore assignment day was yesterday
+    if unassigned_chore.apartment.chore_assignment_day == Date.yesterday.strftime("%A")
+
     @apartment = unassigned_chore.apartment
 
-    # While there are unassigned chores in this apartment
-    while @apartment.chores.where(user_id: nil).length > 0
-      # Find the roommate with the lowest possible points for the week's chores
-      bum = @apartment.users.order(total_week_points: :desc).last
+      # While there are unassigned chores in this apartment
+      while @apartment.chores.where(user_id: nil).length > 0
+        # Find the roommate with the lowest possible points for the week's chores
+        bum = @apartment.users.order(total_week_points: :desc).last
 
-      # Find the chore worth the most points
-      gross_chore = @apartment.chores.where(user_id: nil).order(points_value: :desc).first
+        # Find the chore worth the most points
+        gross_chore = @apartment.chores.where(user_id: nil).order(points_value: :desc).first
 
-      # Assign the gross chore to the bum roommate
-      gross_chore.assign_chore(bum)
+        # Assign the gross chore to the bum roommate
+        gross_chore.assign_chore(bum)
+      end
     end
   end
 end
