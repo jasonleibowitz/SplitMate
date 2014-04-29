@@ -1,5 +1,11 @@
 <%= form_tag 'completechore', method: 'post', class: "complete-form" do %>
 
+  <%= label_tag 'Before Picture' %>
+  <%= file_field_tag :avatar %>
+
+  <%= label_tag 'After Picture' %>
+  <%= file_field_tag :after_picture %>
+
   <%= label_tag 'comments' %>
   <%= text_area_tag 'comments' %>
 

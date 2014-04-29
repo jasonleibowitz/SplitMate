@@ -4,6 +4,8 @@ class Chore < ActiveRecord::Base
   belongs_to :user
   has_many :chore_histories
 
+
+
 	def complete_chore(comments)
 
 		@user = self.user
@@ -31,7 +33,6 @@ class Chore < ActiveRecord::Base
     @chore_history.approval_ratio = 0
     @chore_history.approved = true
     @chore_history.save!
-
   end
 
   def overdue_chore?
