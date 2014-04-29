@@ -25,8 +25,8 @@
           <ul class="right">
           <% if current_user && current_user.apartment != nil %>
             <li class="active"><a href="#"><%= link_to "#{current_user.first_name} #{current_user.last_name} (#{current_user.points_balance})", apartment_path(current_user.apartment) %></a></li>
-          <% else %>
-            <li class="active"><a href="#"><%= current_user.first_name %> <%= current_user.last_name %> (<%= current_user.points_balance) %></a></li>
+          <% elsif current_user && current_user.apartment == nil %>
+            <li class="active"><%= current_user.first_name %> <%= current_user.last_name %> (<%= current_user.points_balance %>)</li>
           <% end %>
             <li class="has-dropdown ">
               <a href="#">Menu</a>
