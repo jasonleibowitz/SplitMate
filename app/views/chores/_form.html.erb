@@ -1,5 +1,14 @@
 <%= form_for([@apartment, @chore]) do |f| %>
 
+  <% if @chore.errors.any? %>
+    <p>Please correct the following errors:</p>
+    <ul>
+      <% @chore.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 

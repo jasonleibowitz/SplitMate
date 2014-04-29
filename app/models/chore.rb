@@ -4,7 +4,8 @@ class Chore < ActiveRecord::Base
   belongs_to :user
   has_many :chore_histories
 
-
+  validates :name, :points_value, :due_date, presence: true
+  validates :points_value, numericality: { only_integer: true, less_than_or_equal_to: 20, greater_than_or_equal_to: 1 }
 
 	def complete_chore(comments)
 

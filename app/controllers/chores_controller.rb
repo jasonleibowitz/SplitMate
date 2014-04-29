@@ -17,8 +17,12 @@ class ChoresController < ApplicationController
     @chore = Chore.create(chore_params)
     @apartment = Apartment.find(params[:apartment_id])
     @chore.apartment = @apartment
-    @chore.save!
-    redirect_to @apartment
+    if @chore.valid?
+      @chore.save
+      redirect_to @apartment
+    else
+      render 'new'
+    end
   end
 
   def edit
