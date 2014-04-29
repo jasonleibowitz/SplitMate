@@ -30,6 +30,7 @@
             <td><%= chore.name  %></td>
             <td><%= chore.points_value %></td>
             <td><%= chore.current_due_date.strftime "%b %e" %> (<%= (chore.current_due_date - Date.today).to_i < 1 ? "#{(chore.current_due_date - Date.today).to_i} Day" : "#{(chore.current_due_date - Date.today).to_i} Days" %>)</td>
+            <td> <%= link_to 'Mark Completed', chore %></td>
           </tr>
         <% end %>
         </tbody>
@@ -50,11 +51,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.chore_histories.each do |chore_history| %>
+          <% @sorted_chore_histories.each do |chore_history| %>
           <tr>
             <td><%= chore_history.name  %></td>
             <td><%= chore_history.points_value %></td>
-            <td><%= chore_history.created_at.strftime "%b %e, %Y" %></td>
+            <td><%= chore_history.created_at.strftime "%b %e, %Y" %>
+            </td>
             <td><%= chore_history.comments %></td>
           </tr>
         <% end %>

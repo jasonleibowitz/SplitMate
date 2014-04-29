@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @chores = @user.chores
-    @completed_chores = @user.chore_histories
+    # @completed_chores = @user.chore_histories
+    @sorted_chore_histories = @user.chore_histories.order(created_at: :desc)
   end
 
   def new

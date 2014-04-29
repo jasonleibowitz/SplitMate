@@ -8,7 +8,7 @@ class ApartmentsController < ApplicationController
     @apartment = Apartment.find(params[:id])
     @roommates = @apartment.users
     @leaderboard = @apartment.users.order(points_balance: :desc)
-    @chores = @apartment.chores
+    @chores = @apartment.chores.order(points_value: :desc)
   end
 
   def new

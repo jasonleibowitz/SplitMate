@@ -44,5 +44,4 @@ class Chore < ActiveRecord::Base
       self.save!
     end
   end
-
 end
