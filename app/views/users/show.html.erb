@@ -7,8 +7,9 @@
     <%= chore.name %>
     <%= chore.current_due_date %>
     <%= chore.points_value %>
-    <%= link_to 'chore completed', "/completeddetails/#{chore.id}", remote: true %>
+    <%= link_to 'chore completed', "/chores/#{chore.id}"%>
   </div>
+
 <% end %>
 
 <h2 id="completed-chores">My Completed Chores</h2>
@@ -17,6 +18,6 @@
       <%= completed_chore.name %> <br>
       Points: <%= completed_chore.points_value %> <br>
       Comments: <%= completed_chore.comments %> <br>
-      Completed: <%= completed_chore.created_at.to_time.strftime "%b %e, %Y" %>
+      Completed: <%= completed_chore.created_at.to_time.strftime "%b %e, %Y" %><br>
     </div> <br>
   <% end %>
