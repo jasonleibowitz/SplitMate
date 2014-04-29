@@ -45,4 +45,14 @@ class Chore < ActiveRecord::Base
       self.save!
     end
   end
+
+  def assign_chore(user)
+    self.user = user
+    self.current_due_date = Chronic.parse(self.due_date)
+    self.save!
+
+    user.total_week_points += self.points_value
+    user.save!
+  end
+
 end
