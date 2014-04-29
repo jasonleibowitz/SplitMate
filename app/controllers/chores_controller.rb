@@ -14,7 +14,7 @@ class ChoresController < ApplicationController
   end
 
   def create
-    @chore = Chore.create(chore_params)
+    @chore = Chore.new(chore_params)
     @apartment = Apartment.find(params[:apartment_id])
     @chore.apartment = @apartment
     if @chore.valid?
