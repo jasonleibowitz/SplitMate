@@ -31,7 +31,7 @@
         <tbody>
           <% @user.chores.each do |chore| %>
           <tr>
-            <td><%= chore.name  %></td>
+            <td><%= link_to chore.name, chore_path(chore) %></td>
             <td><%= chore.points_value %></td>
             <td><%= chore.current_due_date.strftime "%b %e" %> (<%= (chore.current_due_date - Date.today).to_i < 1 ? "#{(chore.current_due_date - Date.today).to_i} Day" : "#{(chore.current_due_date - Date.today).to_i} Days" %>)</td>
           </tr>
