@@ -13,6 +13,41 @@
 
  *= require_tree .
  */
+
+ /**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+
+ .accordion img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ }
+
+.content.active ul {
+list-style-type: none;
+padding: 0px;
+margin: 0px;
+text-align: right;
+}
+
 div.avatar-wrap {
   display: block;
   width: 150px;
@@ -31,6 +66,27 @@ div.avatar-wrap-thumb {
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  float: left;
+}
+
+div.avatar-wrap-leader {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  float: left;
+}
+
+div.leaderboard-row{
+  text-align: center;
+  vertical-align: middle;
+  background-color: darkgrey;
 }
 
 div.apt-header {

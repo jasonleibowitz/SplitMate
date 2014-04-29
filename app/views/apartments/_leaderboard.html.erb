@@ -1,8 +1,17 @@
-<table border=1>
-<% @leaderboard.each do |roommate| %>
-<tr>
-  <td><div class="avatar-wrap-thumb"><%= image_tag roommate.avatar.url(:thumb) %></div></td>
-  <td><%= roommate.points_balance %></td>
-</tr>
-<% end %>
-</table>
+<dl class="accordion" data-accordion>
+	<% i = 1 %>
+	<% @leaderboard.each do |roommate| %>
+  <dd>
+    <a href="#panel<%= i %>"><%= image_tag roommate.avatar.url(:thumb) %>  <%= roommate.first_name %> <%= roommate.points_balance %></a>
+    <div id="panel<%= i %>" class="content">
+      <ul>
+      	<% roommate.chores.each do |chore| %>
+      	<li><%= link_to chore.name, chore %> - <%= chore.points_value %></li>
+      	<% end %>
+      </ul>
+    </div>
+  </dd>
+  <% i+=1 %>
+  <% end %>
+</dl>
+
