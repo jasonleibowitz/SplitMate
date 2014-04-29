@@ -2,7 +2,11 @@
   <div class="row">
     <div class="small-7 small-centered columns end">
       <div class="avatar-wrap">
-        <%= image_tag @user.avatar.url(:medium), class: 'avatar' %>
+        <% if @user.avatar_file_name == nil %>
+          <%= image_tag "default_images/J.png", class: 'avatar' %>
+        <% else %>
+          <%= image_tag @user.avatar.url(:medium), class: 'avatar' %>
+        <% end %>
       </div>
       <div class="apt-header">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>

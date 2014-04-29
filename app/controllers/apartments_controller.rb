@@ -21,7 +21,7 @@ class ApartmentsController < ApplicationController
       @apartment.default_avatar = Google.find_latlon(@apartment.street, @apartment.zipcode)
     end
     @apartment.add_default_chores
-    @apartment.save
+    @apartment.save!
     @user = current_user
     @user.apartment = @apartment
     @user.save!

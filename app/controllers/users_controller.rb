@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     @user.completed_week_points = 0
     @user.total_week_points = 0
     @user.admin = false
+    @user.dollar_balance = 0
+    if @user.avatar_file_name == nil
+      @user.default_avatar
+    end
     if @user.save
       UserMailer.welcome_user(@user).deliver
     end
@@ -33,7 +37,6 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     require_authorization
-
   end
 
   def update
