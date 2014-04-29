@@ -45,3 +45,13 @@ img.avatar {
 h3.apt-header {
   text-align: center;
 }
+div.red {
+  background: red;
+}
+
+table {
+  margin: 0 auto;
+}
+.small-space {
+  margin-bottom: 20px;
+}
