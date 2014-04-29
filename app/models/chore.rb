@@ -12,8 +12,16 @@ class Chore < ActiveRecord::Base
 		@user = self.user
 
     # Give user points for completing chore
-		self.user.update_points(self.points_value)
-		self.user.save!
+		@user.update_points(self.points_value)
+		@user.save!
+
+    # If chore had money value give user that amount and remove it from the chore object
+    if self.dollar_value != nil || self.dollar_value > 0
+      @user.dollar_balance += self.dollar_value
+      @user.save!
+      self.dollar_value = 0
+      self.save!
+    end
 
 		#Mark chore as unassigned
 		self.user = nil
@@ -37,12 +45,23 @@ class Chore < ActiveRecord::Base
   end
 
   def overdue_chore?
-    if self.current_due_date == Date.today
+    if self.current_due_date == Date.yesterday
       @user = self.user
       @user.dollar_balance -= self.points_value
       @user.save!
       self.user = nil
+      self.dollar_value += self.points_value
       self.save!
     end
   end
+
+  def assign_chore(user)
+    self.user = user
+    self.current_due_date = Chronic.parse(self.due_date)
+    self.save!
+
+    user.total_week_points += self.points_value
+    user.save!
+  end
+
 end

@@ -22,6 +22,7 @@ class ApartmentsController < ApplicationController
     end
     @apartment.add_default_chores
     if @apartment.valid?
+      @apartment.chore_assignment_day = "Friday"
       @apartment.save
       @user = current_user
       @user.apartment = @apartment
@@ -60,7 +61,7 @@ class ApartmentsController < ApplicationController
 
   private
   def apartment_params
-    return params.require(:apartment).permit(:name, :street, :apt, :zipcode, :avatar, :avatar_file_name)
+    return params.require(:apartment).permit(:name, :street, :apt, :zipcode, :chore_assignment_day, :avatar, :avatar_file_name)
   end
 
 end

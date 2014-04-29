@@ -32,7 +32,11 @@
         <tbody>
           <% @user.chores.each do |chore| %>
           <tr>
-            <td><%= chore.name %></td>
+            <% if chore.dollar_value > 0 %>
+              <td><%= chore.name %>  <span class="alert round radius label">$<%= chore.dollar_value %></span></td>
+            <% else %>
+              <td><%= chore.name %></td>
+            <% end %>
             <td><%= chore.points_value %></td>
             <td><%= chore.current_due_date.strftime "%b %e" %> (<%= (chore.current_due_date - Date.today).to_i < 1 ? "#{(chore.current_due_date - Date.today).to_i} Day" : "#{(chore.current_due_date - Date.today).to_i} Days" %>)</td>
             <td> <%= link_to 'Mark Completed', chore %></td>

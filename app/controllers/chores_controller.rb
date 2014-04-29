@@ -17,6 +17,7 @@ class ChoresController < ApplicationController
     @chore = Chore.new(chore_params)
     @apartment = Apartment.find(params[:apartment_id])
     @chore.apartment = @apartment
+    @chore.dollar_value = 0
     if @chore.valid?
       @chore.save
       redirect_to @apartment
@@ -43,9 +44,9 @@ class ChoresController < ApplicationController
   def assign_chore
     @chore = Chore.find(params[:id])
     @user = current_user
-    @chore.user = @user
-    @chore.current_due_date = Chronic.parse(@chore.due_date)
-    @chore.save!
+
+    @chore.assign_chore(@user)
+
     redirect_to @user
   end
 
