@@ -56,6 +56,7 @@ div.avatar-wrap {
   border-radius: 50%;
   overflow: hidden;
   margin: 30px auto 0 auto;
+  border: 1px solid black;
 }
 
 div.avatar-wrap-thumb {
@@ -92,6 +93,7 @@ div.avatar-wrap-left {
   overflow: hidden;
   margin: 30px auto 0 auto;
   float: left;
+  border: 1px solid black;
 }
 
 div.avatar-wrap-right {
@@ -103,6 +105,7 @@ div.avatar-wrap-right {
   overflow: hidden;
   margin: 30px auto 0 auto;
   float: right;
+  border: 1px solid black;
 }
 
 div.leaderboard-row{
