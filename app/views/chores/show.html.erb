@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="small-5 columns">
+  <div class="small-6 columns">
     <div class="avatar-wrap-right">
       <% if @chore.apartment.avatar_file_name == nil %>
         <%= image_tag @chore.apartment.default_avatar, class: 'avatar' %>
@@ -8,7 +8,7 @@
       <% end %>
     </div> <!-- END AVATAR-WRAP-RIGHT -->
   </div> <!-- END SMALL-5 COLUMNS -->
-  <div class="small-5 columns">
+  <div class="small-6 columns">
     <div class="avatar-wrap-left">
       <% if @chore.user.avatar_file_name == nil %>
         <%= image_tag "default_images/J.png", class: 'avatar' %>
@@ -20,15 +20,14 @@
 </div> <!-- END ROW -->
 
 <div class="row">
-  <div class="small-4 small-centered columns chore-show-info">
+  <div class="small-space"></div>
+  <div class="small-4 small-centered columns centered-text">
     <h3><%= @chore.name %></h3>
     <h6><%= @chore.points_value == 1 ? "#{@chore.points_value} Point" : "#{@chore.points_value} Points" %> | <%= @chore.current_due_date.strftime "%b %e" %> (<%= (@chore.current_due_date - Date.today).to_i < 1 ? "#{(@chore.current_due_date - Date.today).to_i} Day" : "#{(@chore.current_due_date - Date.today).to_i} Days" %>)</h6>
   </div> <!-- END SMALL-4 SMALL-CENTERED -->
 </div> <!-- END ROW -->
 
-<div class="row">
-  <%= render :partial => '/chore_histories/form', :locals => { :chore_id => params[:id] } %>
-</div> <!-- END ROW -->
+<%= render :partial => '/chore_histories/form', :locals => { :chore_id => params[:id] } %>
 
 
 

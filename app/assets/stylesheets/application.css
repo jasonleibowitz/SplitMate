@@ -131,6 +131,10 @@ table {
   margin-bottom: 20px;
 }
 
-.chore-show-info {
+.small-space {
+  margin-bottom: 40px;
+}
+
+.centered-text {
   text-align: center;
 }
