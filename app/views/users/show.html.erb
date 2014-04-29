@@ -2,7 +2,11 @@
   <div class="row">
     <div class="small-7 small-centered columns end">
       <div class="avatar-wrap">
-        <%= image_tag @user.avatar.url(:medium), class: 'avatar' %>
+        <% if @user.avatar_file_name == nil %>
+          <%= image_tag "default_images/J.png", class: 'avatar' %>
+        <% else %>
+          <%= image_tag @user.avatar.url(:medium), class: 'avatar' %>
+        <% end %>
       </div>
       <div class="apt-header">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>
@@ -19,17 +23,19 @@
       <table>
         <thead>
           <tr>
-            <th width="300">Chore</th>
+            <th width="250">Chore</th>
             <th width="100">Points</th>
-            <th width="400">Due</th>
+            <th width="200">Due</th>
+            <th width="200">Complete</th>
           </tr>
         </thead>
         <tbody>
           <% @user.chores.each do |chore| %>
           <tr>
-            <td><%= chore.name  %></td>
+            <td><%= chore.name %></td>
             <td><%= chore.points_value %></td>
             <td><%= chore.current_due_date.strftime "%b %e" %> (<%= (chore.current_due_date - Date.today).to_i < 1 ? "#{(chore.current_due_date - Date.today).to_i} Day" : "#{(chore.current_due_date - Date.today).to_i} Days" %>)</td>
+            <td> <%= link_to 'Mark Completed', chore %></td>
           </tr>
         <% end %>
         </tbody>
@@ -50,11 +56,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.chore_histories.each do |chore_history| %>
+          <% @sorted_chore_histories.each do |chore_history| %>
           <tr>
             <td><%= chore_history.name  %></td>
             <td><%= chore_history.points_value %></td>
-            <td><%= chore_history.created_at.strftime "%b %e, %Y" %></td>
+            <td><%= chore_history.created_at.strftime "%b %e, %Y" %>
+            </td>
             <td><%= chore_history.comments %></td>
           </tr>
         <% end %>
@@ -63,5 +70,14 @@
     </div>
   </div>
 <% else %>
-  <%= link_to 'Add an Apartment', new_apartment_path, class: 'button' %>
+  <div class="row">
+    <div class="small-10 small columns small-space">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-10 small-centered columns">
+        <%= link_to 'Add an Apartment', new_apartment_path, class: 'button expand' %>
+    </div>
+  </div>
 <% end %>

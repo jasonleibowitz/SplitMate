@@ -8,7 +8,6 @@ describe Apartment do
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :street }
-  it { should validate_presence_of :apt }
   it { should validate_presence_of :zipcode }
   it { should validate_numericality_of :zipcode }
   it { should ensure_length_of(:zipcode).is_equal_to(5) }

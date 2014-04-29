@@ -2,6 +2,13 @@ require_relative '../spec_helper.rb'
 
 describe Chore do
 
+	it { should validate_presence_of :name }
+	it { should validate_presence_of :points_value }
+	it { should validate_presence_of :due_date }
+	it { should validate_numericality_of(:points_value).only_integer }
+	it { should validate_numericality_of(:points_value).is_less_than_or_equal_to(20) }
+	it { should validate_numericality_of(:points_value).is_greater_than_or_equal_to(1) }
+
 	describe "#complete chore" do
 		it "can complete a chore and give the user points" do
 		@vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0)

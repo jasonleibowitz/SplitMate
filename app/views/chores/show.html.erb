@@ -1,18 +1,35 @@
-<div class="chore_show_header">
-  <%= image_tag @chore.user.avatar.url(:medium), class: 'avatar' %>
+<div class="row">
+  <div class="small-6 columns">
+    <div class="avatar-wrap-right">
+      <% if @chore.apartment.avatar_file_name == nil %>
+        <%= image_tag @chore.apartment.default_avatar, class: 'avatar' %>
+      <% else %>
+        <%= image_tag @chore.apartment.avatar.url(:medium), class: 'avatar' %>
+      <% end %>
+    </div> <!-- END AVATAR-WRAP-RIGHT -->
+  </div> <!-- END SMALL-5 COLUMNS -->
+  <div class="small-6 columns">
+    <div class="avatar-wrap-left">
+      <% if @chore.user.avatar_file_name == nil %>
+        <%= image_tag "default_images/J.png", class: 'avatar' %>
+      <% else %>
+        <%= image_tag @chore.user.avatar.url(:medium), class: 'avatar' %>
+      <% end %>
+    </div> <!-- END AVATAR-WRAP-LEFT -->
+  </div> <!-- END SMALL-5 COLUMNS -->
+</div> <!-- END ROW -->
 
-   <% if @chore.apartment.avatar_file_name == nil %>
-      <%= image_tag @chore.apartment.default_avatar, class: 'avatar' %>
-    <% else %>
-      <%= image_tag @chore.apartment.avatar.url(:medium), class: 'avatar' %>
-    <% end %>
-</div>
-
-<p>
-  Chore: <%= @chore.name %> Points: <%= @chore.points_value %> Due Date: <%= @chore.due_date %>
-
-</p>
-
+<div class="row">
+  <div class="small-space"></div>
+  <div class="small-4 small-centered columns centered-text">
+    <h3><%= @chore.name %></h3>
+    <h6><%= @chore.points_value == 1 ? "#{@chore.points_value} Point" : "#{@chore.points_value} Points" %> | <%= @chore.current_due_date.strftime "%b %e" %> (<%= (@chore.current_due_date - Date.today).to_i < 1 ? "#{(@chore.current_due_date - Date.today).to_i} Day" : "#{(@chore.current_due_date - Date.today).to_i} Days" %>)</h6>
+  </div> <!-- END SMALL-4 SMALL-CENTERED -->
+</div> <!-- END ROW -->
 
 <%= render :partial => '/chore_histories/form', :locals => { :chore_id => params[:id] } %>
+
+
+
+
 

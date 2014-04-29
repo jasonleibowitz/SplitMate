@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @chores = @user.chores
-    @completed_chores = @user.chore_histories
+    # @completed_chores = @user.chore_histories
+    @sorted_chore_histories = @user.chore_histories.order(created_at: :desc)
   end
 
   def new
@@ -23,17 +24,23 @@ class UsersController < ApplicationController
     @user.completed_week_points = 0
     @user.total_week_points = 0
     @user.admin = false
-    if @user.save
-      UserMailer.welcome_user(@user).deliver
+    @user.dollar_balance = 0
+    if @user.avatar_file_name == nil
+      @user.default_avatar
     end
-    session[:user_id] = @user.id
-    redirect_to @user
+    if @user.valid?
+      @user.save
+      UserMailer.welcome_user(@user).deliver
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   def edit
     @user = User.find(params[:id])
     require_authorization
-
   end
 
   def update

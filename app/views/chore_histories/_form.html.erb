@@ -1,16 +1,36 @@
-<%= form_tag 'completechore', method: 'post', class: "complete-form" do %>
+<div class="small-space"></div>
+<div class="row">
+  <%= form_tag 'completechore', method: 'post', class: "complete-form" do %>
 
-  <%= label_tag 'Before Picture' %>
-  <%= file_field_tag :avatar %>
+    <div class="small-6 small-centered columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <%= label_tag 'Before Picture' %>
+          <%= file_field_tag :avatar %>
+      </div>
+      </div>
+    </div>
 
-  <%= label_tag 'After Picture' %>
-  <%= file_field_tag :after_picture %>
+      <div class="small-6 small-centered columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <%= label_tag 'After Picture' %>
+          <%= file_field_tag :after_picture %>
+      </div>
+      </div>
+    </div>
 
-  <%= label_tag 'comments' %>
-  <%= text_area_tag 'comments' %>
 
-  <%= hidden_field_tag 'chore_id', params[:id] %>
+    <div class="small-6 small-centered columns">
+      <%= label_tag 'comments' %>
+      <%= text_area_tag 'comments' %>
+    </div>
 
-  <%= submit_tag :submit %>
+    <%= hidden_field_tag 'chore_id', params[:id] %>
 
-<% end %>
+    <div class="small-6 small-centered columns">
+      <%= submit_tag :submit %>
+    </div>
+
+  <% end %>
+</div>

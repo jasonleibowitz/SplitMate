@@ -21,4 +21,11 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def default_avatar
+    letter = self.first_name[0]
+    url = 'default_images/' + letter.upcase + '.png'
+    self.default_avatar = url
+    # self.save
+  end
+
 end
