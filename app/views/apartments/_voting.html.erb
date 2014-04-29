@@ -1,0 +1,21 @@
+<dl class="voting" data-accordion>
+	<% i = 0 %> 
+	<% @completed_chores.each do |chore| %>
+  <div class="vote-item">
+    <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>"><%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   </a> <%= chore.points_value %> pts
+
+    <!-- the voting buttons -->
+  	<div class="vote-button">
+	    <%= form_tag('/posts', remote: true) do %>
+				<%= submit_tag ("u")%>
+			<% end %>
+			<%= form_tag('/posts', remote: true) do %>
+		  	<%= submit_tag ("d")%>
+			<% end %>
+		</div>
+		<!-- end voting buttons -->
+    
+  </div>
+  <% i += 1 %>
+  <% end %>
+</dl>

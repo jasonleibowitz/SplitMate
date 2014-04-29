@@ -11,6 +11,8 @@ class ChoreHistory < ActiveRecord::Base
   has_attached_file :after_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :after_picture, :content_type => /\Aimage\/.*\Z/
 
+  scope :last_week, -> { where("created_at BETWEEN '#{1.week.ago}' AND '#{DateTime.now.end_of_day}'")  }
+
   def calculate_score
   	#this method is neccesary to the approvals model, so that we can have an accurate score for a chore, even after an approval has been deleted from the database.
   	total = 0
