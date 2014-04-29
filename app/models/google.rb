@@ -7,7 +7,7 @@ GOOGLE_STREETVIEW_BEG = 'http://maps.googleapis.com/maps/api/streetview?size=300
 GOOGLE_STREETVIEW_END = '&heading=235&sensor=false'
 
   def self.find_latlon(street, zipcode)
-    result = HTTParty.get(GOOGLE_API_BEG + street.gsub(/\W/, '+') + "+#{zipcode}" + GOOGLE_API_END)
+    result = HTTParty.get(GOOGLE_API_BEG + street.gsub(/\W/, '+') + "+#{zipcode.to_i}" + GOOGLE_API_END)
     lat = result["results"].first["geometry"]["location"]["lat"]
     lng = result["results"].first["geometry"]["location"]["lng"]
     return GOOGLE_STREETVIEW_BEG + "#{lat},#{lng}" + GOOGLE_STREETVIEW_END
