@@ -27,11 +27,14 @@ class UsersController < ApplicationController
     if @user.avatar_file_name == nil
       @user.default_avatar
     end
-    if @user.save
+    if @user.valid?
+      @user.save
       UserMailer.welcome_user(@user).deliver
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      render 'new'
     end
-    session[:user_id] = @user.id
-    redirect_to @user
   end
 
   def edit
