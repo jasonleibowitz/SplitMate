@@ -1,29 +1,64 @@
-<%= form_for @apartment do |f| %>
+<div class="small-space"></div>
+<div class="row">
+  <%= form_for @apartment do |f| %>
 
-  <% if @apartment.errors.any? %>
-    <p>Please correct the following errors:</p>
-    <ul>
-      <% @apartment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <% if @apartment.errors.any? %>
+      <p>Please correct the following errors:</p>
+      <ul>
+        <% @apartment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="small-6 small-centered columns">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+</div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <%= f.label :street %>
+      <%= f.text_field :street %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <%= f.label :apt %>
+      <%= f.text_field :apt %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <%= f.label :zipcode %>
+      <%= f.number_field :zipcode %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <% if @apartment.chore_assignment_day != nil %>
+        <%= f.label :chore_assignment_day %>
+        <%= f.select :chore_assignment_day, Date::DAYNAMES %>
       <% end %>
-    </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <%= f.label 'Apartment Image' %>
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <%= f.submit :submit %>
+    </div>
+  </div>
+
   <% end %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :street %>
-  <%= f.text_field :street %>
-
-  <%= f.label :apt %>
-  <%= f.text_field :apt %>
-
-  <%= f.label :zipcode %>
-  <%= f.number_field :zipcode %>
-
-  <%= f.label 'Apartment Image' %>
-  <%= f.file_field :avatar %>
-
-  <%= f.submit :submit %>
-
-<% end %>

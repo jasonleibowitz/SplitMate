@@ -1,2 +1,17 @@
-<h1>Update Your Apartment</h1>
+<div class="row">
+  <div class="small-8 small-centered columns">
+     <div class="avatar-wrap">
+        <% if @apartment.avatar_file_name == nil %>
+          <%= image_tag @apartment.default_avatar, class: 'avatar' %>
+        <% else %>
+          <%= image_tag @apartment.avatar.url(:medium), class: 'avatar' %>
+        <% end %>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="small-10 small-centered columns">
+    <h1 class="centered-text">Edit <%= @apartment.name %> Settings</h1>
+  </div>
+</div>
 <%= render "form" %>

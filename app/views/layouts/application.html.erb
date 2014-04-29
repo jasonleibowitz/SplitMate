@@ -31,10 +31,15 @@
             <li class="has-dropdown ">
               <a href="#">Menu</a>
               <ul class="dropdown">
-                <li><%= link_to 'Logout', logout_path %></li>
                 <% if current_user %>
                 <li><%= link_to 'Profile', user_path(current_user) %></li>
                 <% end %>
+
+                <% if current_user && current_user.apartment != nil %>
+                  <li><%= link_to 'Apartment Settings', edit_apartment_path(current_user.apartment) %></li>
+                <% end %>
+
+                <li><%= link_to 'Logout', logout_path %></li>
               </ul>
             </li>
           </ul>

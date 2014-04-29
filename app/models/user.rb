@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
     self.points_balance += points_value
     self.points_lifetime += points_value
     self.completed_week_points += points_value
-    self.total_week_points += points_value
     self.save
   end
 
