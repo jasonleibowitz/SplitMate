@@ -1,16 +1,17 @@
 <% @chores.each do |chore| %>
-<ul>
-<div>
   <% if chore.user == nil %>
     <%= content_tag_for(:div, chore) %>
-    <li> Chore: <%= chore.name %> </li>
-    <li> Points: <%= chore.points_value %> </li>
-    <li> Due Date: <%= chore.due_date %> </li>
-    <%= link_to 'edit chore', edit_chore_path(chore) %>
-    <%= link_to 'assign chore', "/assignchore/#{chore.id}"  %>
+      <dl class="accordion" data-accordion>
+        <dd>
+          <a href="#panel<%= chore.id %>"><%= chore.name %> (<%= chore.points_value %>)</a>
+          <div id="panel<%= chore.id %>" class="content">
+            <p>Points: <%= chore.points_value %></p>
+            <p>Due: <%= chore.due_date %></p>
+            <p><%= link_to 'accept challenge', "/assignchore/#{chore.id}"  %></p>
+            <p><%= link_to 'edit chore', edit_chore_path(chore) %></p>
+          </div>
+        </dd>
+      </dl>
   <% end %>
-
-</div>
-</ul>
 <% end %>
 

@@ -64,6 +64,9 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    foundation-rails (5.2.2.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     hike (1.2.3)
     httparty (0.13.0)
       json (~> 1.8)
@@ -185,6 +188,7 @@ DEPENDENCIES
   chronic
   coffee-rails (~> 4.0.0)
   figaro
+  foundation-rails
   httparty
   jbuilder (~> 1.2)
   jquery-rails

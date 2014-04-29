@@ -1,18 +1,37 @@
-<%= render @apartment %>
+<div class="row">
+  <div class="small-8 small-centered columns end">
 
-<%= link_to 'Add Roomates', "/apartments/#{params[:id]}/addroommates" %>
+    <!-- Apartment Header -->
+    <div class="avatar-wrap">
+      <% if @apartment.avatar_file_name == nil %>
+          <%= image_tag @apartment.default_avatar, class: 'avatar' %>
+        <% else %>
+          <%= image_tag @apartment.avatar.url(:medium), class: 'avatar' %>
+        <% end %>
+      </div>
 
-<%= link_to 'Create a chore', new_apartment_chore_path(@apartment) %>
+      <div class="apt-header">
+        <h1><%= @apartment.name %></h1>
+        <h5><%= @apartment.street %></h5>
+      </div>
+  </div>
+</div>
 
-
-<h1>Chore Marketplace</h1>
-
-<%= render :partial => '/chores/chores_index' %>
-
-<h2>Assigned Chores</h2>
-
-<%= render :partial => '/chores/assigned_chores_index' %>
-
-<h2>Leaderboard</h2>
-
-<%= render 'leaderboard' %>
+<div class="row">
+  <div class="small-4 small columns">
+    <h3 class="apt-header">Chore Marketplace</h3>
+    <hr>
+    <%= link_to 'Create a Chore', new_apartment_chore_path(@apartment), class: 'button tiny' %>
+    <%= render :partial => '/chores/chores_index' %>
+  </div>
+  <div class="small-4 columns">
+    <h3 class="apt-header">Leaderboard</h3>
+    <hr>
+    <%= link_to 'Add a Roommate', new_apartment_chore_path(@apartment), class: 'button tiny' %>
+    <%= render 'leaderboard' %>
+  </div>
+  <div class="small-4 columns">
+    <h3 class="apt-header">Voting</h3>
+    <hr>
+  </div>
+</div>

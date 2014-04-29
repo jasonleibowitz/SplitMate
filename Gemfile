@@ -53,6 +53,8 @@ gem 'httparty'
 
 gem 'chronic'
 
+gem 'foundation-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
