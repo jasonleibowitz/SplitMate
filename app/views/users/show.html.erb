@@ -45,7 +45,7 @@
             <% if chore.dollar_value > 0 %>
               <td><%= chore.name %>  <span class="alert round radius label">$<%= chore.dollar_value %></span></td>
             <% else %>
-              <td><%= chore.name %></td>
+              <td> <%= chore.name %></td>
             <% end %>
             <td><%= chore.points_value %></td>
             <td><%= chore.current_due_date.strftime "%b %e" %> (<%= (chore.current_due_date - Date.today).to_i < 1 ? "#{(chore.current_due_date - Date.today).to_i} Day" : "#{(chore.current_due_date - Date.today).to_i} Days" %>)</td>
@@ -82,7 +82,7 @@
         <tbody id='chore-history'>
           <% @sorted_chore_histories.each do |chore_history| %>
           <tr>
-            <td><%= chore_history.name  %></td>
+            <td> <%= link_to chore_history.name, chore_history_path(chore_history) %></td>
             <td><%= chore_history.points_value %></td>
             <td><%= chore_history.created_at.strftime "%b %e, %Y" %>
             </td>

@@ -1,13 +1,13 @@
 <div class="small-space"></div>
 <div class="row">
-  <%= form_tag 'completechore', method: 'post', :multipart => true, class: "complete-form" do %>
+  <%= form_for(@chore_history), html: {class: 'complete-form'} do |f| %>
 
 
     <div class="small-6 small-centered columns">
       <div class="row collapse">
         <div class="small-10 columns">
-          <%= label_tag 'Before Picture' %>
-          <%= file_field_tag :avatar %>
+          <%= f.label 'Before Picture' %>
+          <%= f.file_field :avatar %>
       </div>
       </div>
     </div>
@@ -15,22 +15,22 @@
       <div class="small-6 small-centered columns">
       <div class="row collapse">
         <div class="small-10 columns">
-          <%= label_tag 'After Picture' %>
-          <%= file_field_tag :after_picture %>
+          <%= f.label 'After Picture' %>
+          <%= f.file.field :after_picture %>
       </div>
       </div>
     </div>
 
 
     <div class="small-6 small-centered columns">
-      <%= label_tag 'comments' %>
-      <%= text_area_tag 'comments' %>
+      <%= f.label :comments %>
+      <%= f.text_area :comments %>
     </div>
 
-    <%= hidden_field_tag 'chore_id', params[:id] %>
+    <%= f.hidden_field :chore_id, params[:id] %>
 
     <div class="small-6 small-centered columns">
-      <%= submit_tag :submit %>
+      <%= f.submit :submit %>
     </div>
 
   <% end %>

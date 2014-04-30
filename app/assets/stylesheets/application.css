@@ -145,4 +145,15 @@ h1.centered-text {
   text-align: center;
 }
 
+.chore-img-wrap {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.chore-img {
+  width: 300px;
+  height: 200px;
+}
+
 

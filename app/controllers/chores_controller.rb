@@ -6,6 +6,7 @@ class ChoresController < ApplicationController
 
   def show
     @chore = Chore.find(params[:id])
+    # @chore_history = ChoreHistory.new
   end
 
   def new
@@ -62,8 +63,9 @@ class ChoresController < ApplicationController
     @user = @chore.user
     require_authorization
     @comments = params[:comments]
-    @chore.complete_chore(@comments)
+    @chore.complete_chore(@comments, @before_pic, @after_pic)
     redirect_to @user
+    # render text: params.inspect
   end
 
   def last_week
