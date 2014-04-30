@@ -26,13 +26,16 @@ class ApprovalsController < ApplicationController
   end
 
   def destroy
-  	approval = Approval.find(params[:id])
-  	@chore_history = approval.chore_history
+    @user = current_user
+    approval_search = @user.approvals.select {|approval| approval.chore_history_id = params[:approval][:chore_history_id]}
+    @approval = approval_search[0]
+  	@chore_history = @approval.chore_history
   	if @approval.destroy 
   		@chore_history.calculate_score
+      # @chore_history.check_ratio
   		respond_to do |format|
 	      format.html
-	      format.json { render json: @chore_history.to_json }
+	      format.json { render json: @approval.to_json }
 	    end
   	elsif 
   		@message = "error couldn't destroy"

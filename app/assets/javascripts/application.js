@@ -22,41 +22,77 @@ $(document).ready(function () {
   var downvotes = $('.downvoted');
   var unvotes = $('.unvoted');
 
-
-
-  var unvote_form_up = $('<div class="vote-button"></div>');
+  var blankApproval = $('<div class="vote-button"></div>');
+  var approvedUp = $('<div class="vote-button"></div>');
+  var approvedDown = $('<div class="vote-button"></div>');
   
 	
- 
- 	var up = $('<button>').val('up');
- 	up.click(createNewUpApproval);
+  // make blankApproval!
+  	// top button 
+ 	var up = $('<button>u</button>')
+ 	up.click({requestType: 'post', voteVal: '1'}, newUpApp);
+  blankApproval.append(up);
+  unvotes.append(blankApproval);
+  	// bottom button
+  		// to do
 
-  unvote_form_up.append(up);
-  
-  unvotes.append(unvote_form_up);
+
+ // make approvedUp
+ 	// top button
+ 	var removeUpButton = $('<button>x</button>');
+ 	removeUpButton.click({requestType: 'delete', voteVal: '0'}, removeUpApp);
+ 	approvedUp.append(removeUpButton);
+ 	upvotes.append(approvedUp);
+ 			// to do
+ 	// bottom button
+ 			// to do
   
 
   });
 
 
-function createNewUpApproval() {
+function newUpApp (event) {
 
-	 var chore_history_id = $(this).parent().parent().attr('id');
-	
-		$.ajax({
-			url: '/approvals',
-			method: 'post',
-			dataType: 'json',
-			data: {
-				approval: {
-				chore_history_id: chore_history_id,
-				value: '1'
-				}
+ var chore_history_id = $(this).parent().parent().attr('id');
+
+	$.ajax({
+		url: '/approvals',
+		method: event.data.requestType,
+		dataType: 'json',
+		data: {
+			approval: {
+			chore_history_id: chore_history_id,
+			value: event.data.voteVal
 			}
-		}).done(function(data){
-			 console.log(data);
-		});
+		}
+	}).done(function(data){
+			// some kewl stuff
+});   // end newUpApp
+} // end newUpApp
 
-};
+
+function removeUpApp (event) {
+
+	var chore_history_id = $(this).parent().parent().attr('id');
+
+	$.ajax({
+		url: '/approvals',
+		method: event.data.requestType,
+		dataType: 'json',
+		data: {
+			approval: {
+			chore_history_id: chore_history_id,
+			value: event.data.voteVal
+			}
+		}
+	}).done(function(data){
+		// some kewl stuff
+		});   // end removeUpApp
+
+}
+
+
+
+
 
 $(function(){ $(document).foundation(); });
