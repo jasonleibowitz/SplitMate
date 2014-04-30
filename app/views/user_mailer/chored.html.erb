@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You Just Got Chored!</title>
+</head>
+<body>
+  <h1>You Just Got Chored!</h1>
+  <p>
+    Egad! <%= @user.first_name %>, we have bad news to tell you. Your roommate <%= @roommate.first_name %> just chored you and spent some of his points to give your his chore, <%= @chore.name %>.
+  </p>
+  <p>
+    This chore is now visible under your current chores list. If you do not complete this chore you will be forced to pay it's dollar value. But fear not! Do more chores to gain points and you can chore <%= @roommate.first_name %> right back.
+  </p>
+  <p>Karma baby.</p>
+</body>
+</html>

@@ -16,6 +16,8 @@ SplitmateApp::Application.routes.draw do
   post '/chores/completechore' => 'chores#complete_chore'
   post '/chores/lastweek' => 'chores#last_week'
   post '/chores/lastmonth' => 'chores#last_month'
+  get '/users/:id/redeempoints' => 'users#redeem_points'
+  post '/users/:id/spendpoints' => 'users#spendpoints'
 
   root to: 'users#index'
 

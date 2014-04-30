@@ -10,7 +10,7 @@
       </div>
       <div class="apt-header">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-        <p class='email-address'><%= @user.email %></p>
+        <p class='email-address hide'><%= @user.email %></p>
         <h3><%= link_to @user.apartment.name, apartment_path(@user.apartment) %></h3>
         <h6>Points Balance: <%= @user.points_balance %> | Dollar Balance: $<%= @user.dollar_balance %></h6>
         <div class="small-space"></div>
@@ -24,7 +24,7 @@
     </div>
     <div class="small-4 columns">
       <ul class="button-group">
-        <li> <%= link_to 'Redeem Points', root_path, id: 'last-week-chores', class: 'button tiny' %></li>
+        <li> <%= link_to 'Redeem Points', "/users/#{@user.id}/redeempoints", class: 'button tiny' %></li>
       </ul> <!-- END BUTTON GROUP -->
     </div> <!-- END SMALL-4 COLUMNS -->
   </div> <!-- END ROW -->
