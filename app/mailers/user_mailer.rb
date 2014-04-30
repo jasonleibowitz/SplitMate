@@ -17,6 +17,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @roommate = roommate
     @chore = chore
+    @url = 'http://localhost:3000/users/'
     mail(to: @user.email, subject: 'You Just Got Chored!')
   end
 
