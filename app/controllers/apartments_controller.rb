@@ -10,7 +10,7 @@ class ApartmentsController < ApplicationController
     @roommates = @apartment.users
     @leaderboard = @apartment.users.order(points_balance: :desc)
     @chores = @apartment.chores
-    @completed_chores = ChoreHistory.last_week
+    @completed_chores = ChoreHistory.last_week.order(created_at: :desc)
   end
 
   def new
