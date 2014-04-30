@@ -13,14 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require strftime
 //= require_tree .
-$(document).ready(
-
-  console.log("loaded bro")
-
-
-
-
-  );
 
 $(function(){ $(document).foundation(); });

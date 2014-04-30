@@ -66,6 +66,25 @@ class ChoresController < ApplicationController
     redirect_to @user
   end
 
+  def last_week
+    @user = User.find_by_email(params[:user])
+    @sorted_chore_histories = @user.chore_histories.order(created_at: :desc).where "created_at > ?", 1.week.ago
+
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @sorted_chore_histories.to_json }
+    end
+  end
+
+  def last_month
+    @user = User.find_by_email(params[:user])
+    @sorted_chore_histories = @user.chore_histories.order(created_at: :desc).where "created_at > ?", 4.weeks.ago
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @sorted_chore_histories }
+    end
+  end
+
   private
 
   def chore_params

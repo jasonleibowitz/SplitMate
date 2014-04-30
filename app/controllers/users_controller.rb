@@ -11,6 +11,11 @@ class UsersController < ApplicationController
     @chores = @user.chores
     # @completed_chores = @user.chore_histories
     @sorted_chore_histories = @user.chore_histories.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html { }
+      format.json { render json: {msg: params[:data]} }
+    end
   end
 
   def new
@@ -75,6 +80,7 @@ class UsersController < ApplicationController
     end
     redirect_to @apartment
   end
+
 
   private
   def user_params

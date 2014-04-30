@@ -14,6 +14,8 @@ SplitmateApp::Application.routes.draw do
   get '/assignchore/:id/' => 'chores#assign_chore'
   get '/completeddetails/:id' => 'chores#chore_completed_details'
   post '/chores/completechore' => 'chores#complete_chore'
+  post '/chores/lastweek' => 'chores#last_week'
+  post '/chores/lastmonth' => 'chores#last_month'
 
   root to: 'users#index'
 
