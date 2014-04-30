@@ -81,7 +81,7 @@ class ChoresController < ApplicationController
     @sorted_chore_histories = @user.chore_histories.order(created_at: :desc).where "created_at > ?", 4.weeks.ago
     respond_to do |format|
       format.html { }
-      format.json { render json: @sorted_chore_histories }
+      format.json { render json: @sorted_chore_histories.to_json }
     end
   end
 
