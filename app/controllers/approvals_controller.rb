@@ -7,11 +7,12 @@ class ApprovalsController < ApplicationController
 	def create
   	@approval = Approval.new(approval_params)
   	@approval.user_id = current_user.id
-  	@approval.save
+  	@approval.save!
   	@chore_history = @approval.chore_history
   		respond_to do |format|
         format.html { }
         format.json { render json: @approval.to_json }
+        format.js   { }
       end
   end
 

@@ -2,49 +2,6 @@
 
 	<!-- loop through all the chores -->
 	<% @completed_chores.each do |chore| %> 
-	
-	<!-- if the user has made any approvals, ever-->
-	<% if @user.approvals.length > 0 %>
-		
-		<% drawn = false %>
-
-		<!-- loop through all the users' past approval votes for that chore-->
-		<% @user.approvals.each do |approval| %>
-
-			<!-- if the chore being drawn matches the approval and it was an upvote -->
-			<% if chore.id == approval.chore_history.id && approval.value == 1 %>
-				<div class="vote-item upvoted" id="<%= chore.id %>">
-	   		 <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>"><%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   </a> <span id="chore-points-<%=chore.id%>"><%= chore.approval_points %></span> 
-	   		 <% drawn = true %>
-
-			<!-- if the chore being drawn matches the approval and it was an downvote -->
-			<% elsif chore.id == approval.chore_history.id && approval.value == -1 %>
-			<div class="vote-item downvoted" id="<%= chore.id %>">
-    	<a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>"><%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   </a> <span id="chore-points-<%=chore.id%>"><%= chore.approval_points %></span> 
-    	<% drawn = true %>
-
-			<% end %> <!-- end of matches if -->
-		<% end %> <!-- end of approvals.each -->
-
-	    	<!-- if the chore being drawn  doesn't correspond with the current approval -->
-  		<% if drawn==false %>
-
-				<div class="vote-item unvoted"  id="<%= chore.id %>">
-	    	<a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>"><%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   </a> <span id="chore-points-<%=chore.id%>"><%= chore.approval_points %></span> 
-
-	    	<% drawn = false %>
-
-	    	<% end %>
-	
-
-	<% else %> <!-- end of checking approvals.length > 0 -->
-				<div class="vote-item unvoted"  id="<%= chore.id %>">
-	    	<a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>"><%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   </a> <span id="chore-points-<%=chore.id%>"><%= chore.approval_points %></span> 
-	    	<% drawn = true %>
-	<% end %> <!-- end of user.approvals.length -->
-
-    
-  </div>
-
+		<%= render partial: 'chores/chore_approval', locals: {chore: chore} %>
   <% end %> <!-- and now i've finally drawn one chore -->
 </dl>

@@ -1,0 +1,4 @@
+console.log("upvote or downvote worked bro");
+var dom_id = "<%= j(dom_id(@chore_history, "approval")) %>";
+var newChoreHTML = "<%=j render(partial: "chores/chore_approval", locals: {chore: @chore_history}) %>";
+$('#'+dom_id).replaceWith(newChoreHTML);
