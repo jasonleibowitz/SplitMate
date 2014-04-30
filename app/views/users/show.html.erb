@@ -19,8 +19,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="small-10 small-centered columns table">
+    <div class="small-3 small-offset-1 columns">
       <h3>Current Chores</h3>
+    </div>
+    <div class="small-4 columns">
+      <ul class="button-group">
+        <li> <%= link_to 'Redeem Points', root_path, id: 'last-week-chores', class: 'button tiny' %></li>
+      </ul> <!-- END BUTTON GROUP -->
+    </div> <!-- END SMALL-4 COLUMNS -->
+  </div> <!-- END ROW -->
+  <div class="row">
+    <div class="small-10 small-centered columns table">
       <table>
         <thead>
           <tr>
