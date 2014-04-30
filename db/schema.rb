@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429211631) do
+ActiveRecord::Schema.define(version: 20140430141359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140429211631) do
     t.string   "after_picture_content_type"
     t.integer  "after_picture_file_size"
     t.datetime "after_picture_updated_at"
+    t.integer  "js_date"
   end
 
   add_index "chore_histories", ["chore_id"], name: "index_chore_histories_on_chore_id", using: :btree

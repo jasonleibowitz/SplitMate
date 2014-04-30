@@ -41,6 +41,8 @@ class Chore < ActiveRecord::Base
     @chore_history.approval_points = 0
     @chore_history.approval_ratio = 0
     @chore_history.approved = true
+    @chore_history.save
+    @chore_history.js_date = @chore_history.created_at.to_i
     @chore_history.save!
   end
 
