@@ -10,8 +10,8 @@ class ApprovalsController < ApplicationController
   	@approval.save
   	@chore_history = @approval.chore_history
   		respond_to do |format|
-        format.html
-        format.js { render 'new'}
+        format.html { }
+        format.json { render json: @approval.to_json }
       end
   end
 
@@ -21,7 +21,7 @@ class ApprovalsController < ApplicationController
   	@chore_history = @approval.chore_history
   	respond_to do |format|
       format.html
-      format.json { render json: @chore_history.to_json }
+      format.json { render 'new.js' }
     end
   end
 

@@ -14,11 +14,49 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-$(document).ready(
+$(document).ready(function () {
 
-  console.log("loaded bro")
+  console.log("loaded broseph");
+
+  var upvotes = $('.upvoted');
+  var downvotes = $('.downvoted');
+  var unvotes = $('.unvoted');
 
 
-  );
+
+  var unvote_form_up = $('<div class="vote-button"></div>');
+  
+	
+ 
+ 	var up = $('<button>').val('up');
+ 	up.click(createNewUpApproval);
+
+  unvote_form_up.append(up);
+  
+  unvotes.append(unvote_form_up);
+  
+
+  });
+
+
+function createNewUpApproval() {
+
+	 var chore_history_id = $(this).parent().parent().attr('id');
+	
+		$.ajax({
+			url: '/approvals',
+			method: 'post',
+			dataType: 'json',
+			data: {
+				approval: {
+				chore_history_id: chore_history_id,
+				value: '1'
+				}
+			}
+		}).done(function(data){
+			 console.log(data);
+		});
+
+};
 
 $(function(){ $(document).foundation(); });

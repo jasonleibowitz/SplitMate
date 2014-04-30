@@ -5,6 +5,7 @@ class ApartmentsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @apartment = Apartment.find(params[:id])
     @roommates = @apartment.users
     @leaderboard = @apartment.users.order(points_balance: :desc)
