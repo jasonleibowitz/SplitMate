@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    require_usershow_authorization
     @chores = @user.chores
     # @completed_chores = @user.chore_histories
     @sorted_chore_histories = @user.chore_histories.order(created_at: :desc)
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    require_authorization
+    require_edit_authorization
   end
 
   def update

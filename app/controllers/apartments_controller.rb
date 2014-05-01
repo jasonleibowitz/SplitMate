@@ -8,7 +8,7 @@ class ApartmentsController < ApplicationController
 
   def show
     @apartment = Apartment.find(params[:id])
-    require_authorization
+    require_apt_authorization
     # @user = @apartment.user
     @roommates = @apartment.users
     @leaderboard = @apartment.users.order(points_balance: :desc)

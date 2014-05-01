@@ -21,10 +21,26 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_admin
   end
 
-  def require_authorization
-    redirect_to current_user unless ( current_user.apartment.id == @apartment.id )
-    flash[:authorization_error] = 'You do not have permission to view that page'
+  def require_usershow_authorization
+    unless current_user.apartment.users.include?(@user)
+      redirect_to current_user
+      flash[:authorization_error] = 'You do not have permission to view that page'
+    end
   end
 
+  def require_apt_authorization
+    unless current_user.apartment.id == @apartment.id
+      redirect_to current_user
+      flash[:authorization_error] = 'You do not have permission to view that page'
+    end
+  end
+
+  def require_edit_authorization
+    unless current_user == @user
+      redirect_to current_user
+      flash[:authorization_error] = "You do not have permission to view that page"
+    end
+  end
 
 end
+
