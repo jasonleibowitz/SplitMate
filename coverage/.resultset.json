@@ -152,7 +152,6 @@
         null,
         null
       ],
-      "/Users/jason/dev/splitmate_app/app/models/chore.rb": [
       "/Users/jason/dev/splitmate_app/app/models/user.rb": [
         1,
         null,
@@ -226,10 +225,6 @@
         0,
         null,
         null,
-        null
-      ],
-      "/Users/jason/dev/splitmate_app/app/models/user.rb": [
-        1,
         null,
         1,
         1,
@@ -277,6 +272,6 @@
         null
       ]
     },
-    "timestamp": 1398984023
+    "timestamp": 1398984306
   }
 }
