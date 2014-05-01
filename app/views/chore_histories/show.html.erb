@@ -11,7 +11,7 @@
   <div class="small-6 columns">
     <div class="avatar-wrap-left">
       <% if @chore_history.user.avatar_file_name == nil %>
-        <%= image_tag "#{roommate.default_avatar}", class: 'avatar' %>
+        <%= image_tag "#{@chore_history.user.default_avatar}", class: 'avatar' %>
       <% else %>
         <%= image_tag @chore_history.user.avatar.url(:medium), class: 'avatar' %>
       <% end %>

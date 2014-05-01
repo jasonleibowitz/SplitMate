@@ -50,9 +50,7 @@ class ChoreHistoriesController < ApplicationController
     @chore_history.js_date = @chore_history.created_at.to_i
     @chore_history.save!
 
-    render @chore_history
-
-    # render text: params.inspect
+    redirect_to @chore_history
   end
 
   def edit
