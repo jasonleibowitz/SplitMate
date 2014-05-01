@@ -20,15 +20,14 @@ describe Apartment do
   it { have_attached_file :avatar }
 
 
+  describe "#zipcode validation" do
+    it "should throw an error if zipcode is not valid" do
 
-describe "#zipcode validation" do
-  it "should throw an error if zipcode is not valid" do
-    @ga = Apartment.create(name: "GA Speakeasy", street: '10 E 21st Street', apt: '4', zipcode: 13432)
+      @ga.zipcode_validation
 
-    @ga.zipcode_validation
+      expect(@ga.zipcode_validation).to be(nil)
 
-    expect(@ga.zipcode_validation).to eq("That is not a valid zipcode.")
-
+    end
   end
-end
+
 end
