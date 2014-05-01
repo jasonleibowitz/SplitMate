@@ -14,13 +14,5 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-$(document).ready(
-
-  console.log("loaded bro")
-
-
-
-
-  );
 
 $(function(){ $(document).foundation(); });

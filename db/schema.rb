@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140430151607) do
+=======
+ActiveRecord::Schema.define(version: 20140430141359) do
+>>>>>>> 6603d9767d3577c06d2dbb676e3e84e22b9d01f6
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140430151607) do
     t.string   "after_picture_content_type"
     t.integer  "after_picture_file_size"
     t.datetime "after_picture_updated_at"
+    t.integer  "js_date"
   end
 
   add_index "chore_histories", ["chore_id"], name: "index_chore_histories_on_chore_id", using: :btree
@@ -71,7 +76,10 @@ ActiveRecord::Schema.define(version: 20140430151607) do
     t.string   "due_date"
     t.date     "current_due_date"
     t.integer  "dollar_value"
+<<<<<<< HEAD
     t.date     "current_assigned_date"
+=======
+>>>>>>> 6603d9767d3577c06d2dbb676e3e84e22b9d01f6
   end
 
   create_table "users", force: true do |t|

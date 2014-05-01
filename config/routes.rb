@@ -13,7 +13,15 @@ SplitmateApp::Application.routes.draw do
   post '/saveroommate' => 'users#save_roommate'
   get '/assignchore/:id/' => 'chores#assign_chore'
   get '/completeddetails/:id' => 'chores#chore_completed_details'
-  post '/chores/completechore' => 'chores#complete_chore'
+
+  # post '/chores/completechore' => 'chores#complete_chore'
+
+  post '/chores/completechore' => 'chore_histories#create'
+
+  post '/chores/lastweek' => 'chores#last_week'
+  post '/chores/lastmonth' => 'chores#last_month'
+  get '/users/:id/redeempoints' => 'users#redeem_points'
+  post '/users/:id/spendpoints' => 'users#spendpoints'
 
   root to: 'users#index'
 

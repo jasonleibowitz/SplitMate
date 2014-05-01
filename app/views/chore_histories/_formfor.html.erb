@@ -1,0 +1,37 @@
+<div class="small-space"></div>
+<div class="row">
+  <%= form_for(@chore_history), html: {class: 'complete-form'} do |f| %>
+
+
+    <div class="small-6 small-centered columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <%= f.label 'Before Picture' %>
+          <%= f.file_field :avatar %>
+      </div>
+      </div>
+    </div>
+
+      <div class="small-6 small-centered columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <%= f.label 'After Picture' %>
+          <%= f.file.field :after_picture %>
+      </div>
+      </div>
+    </div>
+
+
+    <div class="small-6 small-centered columns">
+      <%= f.label :comments %>
+      <%= f.text_area :comments %>
+    </div>
+
+    <%= f.hidden_field :chore_id, params[:id] %>
+
+    <div class="small-6 small-centered columns">
+      <%= f.submit :submit %>
+    </div>
+
+  <% end %>
+</div>

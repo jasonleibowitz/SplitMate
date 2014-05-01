@@ -18,6 +18,7 @@ class ChoresController < ApplicationController
     @chore = Chore.new(chore_params)
     @apartment = Apartment.find(params[:apartment_id])
     @chore.apartment = @apartment
+    @chore.dollar_value = 0
     if @chore.valid?
       @chore.save
       redirect_to @apartment
@@ -44,10 +45,7 @@ class ChoresController < ApplicationController
   def assign_chore
     @chore = Chore.find(params[:id])
     @user = current_user
-    @chore.user = @user
-    @chore.current_due_date = Chronic.parse(@chore.due_date)
-    @chore.current_assigned_date = Chronic.parse('today')
-    @chore.save!
+    @chore.assign_chore(@user)
     redirect_to @user
   end
 
@@ -63,8 +61,28 @@ class ChoresController < ApplicationController
     @user = @chore.user
     require_authorization
     @comments = params[:comments]
-    @chore.complete_chore(@comments)
+    @chore.complete_chore(@comments, @before_pic, @after_pic)
     redirect_to @user
+    # render text: params.inspect
+  end
+
+  def last_week
+    @user = User.find_by_email(params[:user])
+    @sorted_chore_histories = @user.chore_histories.order(created_at: :desc).where "created_at > ?", 1.week.ago
+
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @sorted_chore_histories.to_json }
+    end
+  end
+
+  def last_month
+    @user = User.find_by_email(params[:user])
+    @sorted_chore_histories = @user.chore_histories.order(created_at: :desc).where "created_at > ?", 4.weeks.ago
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @sorted_chore_histories.to_json }
+    end
   end
 
   private

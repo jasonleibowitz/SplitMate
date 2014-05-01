@@ -1,0 +1,13 @@
+var choreHistoryTable = $('#chore-history')
+
+var data_hash = {date_range: 'last week'}
+
+$.ajax({
+  url: '/chores/sortedchores',
+  dataType: 'json',
+  data: data_hash,
+  method: 'get',
+  success: function(data){
+    console.log(data)
+  }
+})

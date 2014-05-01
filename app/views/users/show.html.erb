@@ -10,6 +10,7 @@
       </div>
       <div class="apt-header">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <p class='email-address hide'><%= @user.email %></p>
         <h3><%= link_to @user.apartment.name, apartment_path(@user.apartment) %></h3>
         <h6>Points Balance: <%= @user.points_balance %> | Dollar Balance: $<%= @user.dollar_balance %></h6>
         <div class="small-space"></div>
@@ -18,8 +19,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="small-10 small-centered columns table">
+    <div class="small-3 small-offset-1 columns">
       <h3>Current Chores</h3>
+    </div>
+    <div class="small-4 columns">
+      <ul class="button-group">
+        <li> <%= link_to 'Redeem Points', "/users/#{@user.id}/redeempoints", class: 'button tiny' %></li>
+      </ul> <!-- END BUTTON GROUP -->
+    </div> <!-- END SMALL-4 COLUMNS -->
+  </div> <!-- END ROW -->
+  <div class="row">
+    <div class="small-10 small-centered columns table">
       <table>
         <thead>
           <tr>
@@ -32,7 +42,11 @@
         <tbody>
           <% @user.chores.each do |chore| %>
           <tr>
-            <td><%= chore.name %></td>
+            <% if chore.dollar_value > 0 %>
+              <td><%= chore.name %>  <span class="alert round radius label">$<%= chore.dollar_value %></span></td>
+            <% else %>
+              <td> <%= chore.name %></td>
+            <% end %>
             <td><%= chore.points_value %></td>
             <td><%= chore.current_due_date.strftime "%b %e" %> (<%= (chore.current_due_date - Date.today).to_i < 1 ? "#{(chore.current_due_date - Date.today).to_i} Day" : "#{(chore.current_due_date - Date.today).to_i} Days" %>)</td>
             <td> <%= link_to 'Mark Completed', chore %></td>
@@ -44,8 +58,18 @@
   </div>
 
   <div class="row">
-    <div class="small-10 small-centered columns table">
+    <div class="small-3 small-offset-1 columns">
       <h3>Chore History</h3>
+    </div>
+    <div class="small-4 columns">
+      <ul class="button-group">
+        <li> <%= link_to 'Last Week', root_path, id: 'last-week-chores', class: 'button tiny', data: {user: @user.id}, remote: true %></li>
+        <li><%= link_to 'Last Month', root_path, id: 'last-month-chores', class: 'button tiny', data: {user: @user.id}, remote: true %></li>
+      </ul> <!-- END BUTTON GROUP -->
+    </div> <!-- END SMALL-4 COLUMNS -->
+  </div> <!-- END ROW -->
+  <div class="row">
+    <div class="small-10 small-centered columns table">
       <table>
         <thead>
           <tr>
@@ -55,10 +79,10 @@
             <th width="300">Comments</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id='chore-history'>
           <% @sorted_chore_histories.each do |chore_history| %>
           <tr>
-            <td><%= chore_history.name  %></td>
+            <td> <%= link_to chore_history.name, chore_history_path(chore_history) %></td>
             <td><%= chore_history.points_value %></td>
             <td><%= chore_history.created_at.strftime "%b %e, %Y" %>
             </td>

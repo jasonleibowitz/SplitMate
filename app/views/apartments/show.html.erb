@@ -27,7 +27,7 @@
   <div class="small-4 columns">
     <h3 class="apt-header">Leaderboard</h3>
     <hr>
-    <%= link_to 'Add a Roommate', new_apartment_chore_path(@apartment), class: 'button tiny' %>
+    <%= link_to 'Add a Roommate', "/apartments/#{params[:id]}/addroommates", class: 'button tiny' %>
     <%= render 'leaderboard' %>
   </div>
   <div class="small-4 columns">
