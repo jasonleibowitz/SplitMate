@@ -1,16 +1,19 @@
 class ApartmentsController < ApplicationController
 
+  before_action :require_authentication
+
   def index
     @apartments = Apartment.all
   end
 
   def show
-    @user = current_user
     @apartment = Apartment.find(params[:id])
+    require_authorization
+    # @user = @apartment.user
     @roommates = @apartment.users
     @leaderboard = @apartment.users.order(points_balance: :desc)
     @chores = @apartment.chores.order(points_value: :desc)
-    @completed_chores = ChoreHistory.last_week.order(created_at: :desc)
+    @completed_chores = ChoreHistory.where(apartment: @apartment).last_week.order(created_at: :desc)
   end
 
   def new
