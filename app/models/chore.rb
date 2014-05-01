@@ -63,5 +63,32 @@ class Chore < ActiveRecord::Base
     user.save!
   end
 
+  def assign_drop_chore(user, buyer)
+    if user == buyer
+      self.user = user
+      self.current_due_date = Chronic.parse(self.due_date)
+      self.current_assigned_date = Date.today
+      self.save!
+
+      user.total_week_points += self.points_value
+      user.save!
+    elsif user != buyer
+      if buyer.points_balance > self.points_value
+        buyer.points_balance -= self.points_value
+        buyer.save!
+
+        self.user = user
+        self.current_due_date = Chronic.parse(self.due_date)
+        self.current_assigned_date = Date.today
+        self.save!
+
+        user.total_week_points += self.points_value
+        user.save!
+      else
+        return false
+      end
+    end
+  end
+
 end
 

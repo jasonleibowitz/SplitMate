@@ -31,7 +31,7 @@ $(function() {
             chore_id: ui.draggable.attr('id'),
             user_id: $(this).attr('id')
           },
-          dataType: 'json'
+          dataType: 'script'
         }).done(function(data) {
         console.log(data);
        ui.draggable.empty();
