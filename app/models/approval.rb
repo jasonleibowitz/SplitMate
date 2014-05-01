@@ -6,7 +6,7 @@ class Approval < ActiveRecord::Base
 	after_save :calculate_score, :check_ratio
 
   # validate :user_cannot_have_voted_multiple_times
- 
+
   # def user_cannot_have_voted_multiple_times
   #   if Approval.find_by(chore_history_id: self.chore_history_id).length > 0
   #   all_approvals_by_chore_history_id = Approval.find_by(self.chore_history_id)
@@ -25,10 +25,10 @@ class Approval < ActiveRecord::Base
   def calculate_score
   	self.chore_history.calculate_score
   	self.chore_history.reload
-  end	
+  end
 
   def check_ratio
-  	self.chore_history.check_ratio 
+  	self.chore_history.check_ratio
     self.chore_history.reload
   end
 

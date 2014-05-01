@@ -106,6 +106,7 @@
       ],
       "/Users/jason/dev/splitmate_app/app/models/chore_history.rb": [
         1,
+        1,
         null,
         1,
         1,
@@ -136,6 +137,10 @@
         3,
         3,
         3,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -251,11 +256,12 @@
         1,
         null,
         0,
+        0,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1398961747
+    "timestamp": 1398969808
   }
 }
