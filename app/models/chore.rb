@@ -46,7 +46,9 @@ class Chore < ActiveRecord::Base
   def calculate_percentage
     today = Date.today
     due_on = self.current_due_date
-    assigned_on = self.current_assigned_date
+    assigned_on = Chronic.parse("last #{self.apartment.chore_assignment_day}").to_date
+    # assigned_on = self.current_assigned_date
+
     chore_length = (due_on - assigned_on).to_i
     remaining_time = (due_on - today).to_i
     time_passed = (assigned_on - today).to_i.abs
