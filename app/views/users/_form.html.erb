@@ -1,5 +1,6 @@
 <%= form_for(@user) do |f| %>
-
+<div class="row">
+  <div class="small-6 columns">
   <% if @user.errors.any? %>
     <p>Please correct the following errors:</p>
     <ul>
@@ -8,25 +9,54 @@
       <% end %>
     </ul>
   <% end %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-6 columns">
   <%= f.label :first_name %>
-  <%= f.text_field :first_name %> <br>
+  <%= f.text_field :first_name %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-6 columns">
   <%= f.label :last_name %>
-  <%= f.text_field :last_name %> <br>
+  <%= f.text_field :last_name %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-6 columns">
   <%= f.label :email %>
-  <%= f.text_field :email %> <br>
+  <%= f.text_field :email %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-6 columns">
   <%= f.label 'Profile Pic' %>
-  <%= f.file_field :avatar %> <br>
+  <%= f.file_field :avatar %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-6 columns">
   <%= f.label :password %>
-  <%= f.password_field :password %> <br>
+  <%= f.password_field :password %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-6 columns">
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %> <br>
+  <%= f.password_field :password_confirmation %>
+  </div>
+</div>
 
-  <%= f.submit :submit %> <br>
-
+<div class="row">
+  <div class="small-6 columns">
+  <%= f.submit :submit %>
+  </div>
+</div>
 <% end %>
