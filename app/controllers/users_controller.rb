@@ -52,6 +52,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    if params[:vacation] == "on"
+      @user.vacation_mode(true)
+    elsif params[:vacation] == "off"
+      @user.vacation_mode(true)
+    end
     redirect_to @user
   end
 
@@ -95,19 +100,24 @@ class UsersController < ApplicationController
     @chore = Chore.find(params[:chore])
     @roommate = User.find(params[:roommate])
 
-    # Assign the chore to the chosen roommate
-    @chore.assign_chore(@roommate)
+    if @roommate.vacation = true
+      flash[:points_error] = "You cannot assign a chore to a roommate that is out of town."
+      render 'redeem_points'
+    else
+      # Assign the chore to the chosen roommate
+      @chore.assign_chore(@roommate)
 
-    # Remove possible points from this user's total week points
-    # and remove cost to reassign chore from user
-    @user.total_week_points -= @chore.points_value
-    @user.points_balance -= cost_key[params[:action]]
-    @user.save!
+      # Remove possible points from this user's total week points
+      # and remove cost to reassign chore from user
+      @user.total_week_points -= @chore.points_value
+      @user.points_balance -= cost_key[params[:action]]
+      @user.save!
 
-    # Send email to roommate letting them know they've been given a chore
-    UserMailer.chored(@roommate, @user, @chore).deliver
+      # Send email to roommate letting them know they've been given a chore
+      UserMailer.chored(@roommate, @user, @chore).deliver
 
-    redirect_to @user
+      redirect_to @user
+    end
   end
 
   def make_payment
