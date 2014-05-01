@@ -195,3 +195,7 @@ h1.centered-text {
   font-size: 12px;
   color: red;
 }
+
+.red-text {
+  color: red;
+}
