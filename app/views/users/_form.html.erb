@@ -1,14 +1,14 @@
 <%= form_for(@user) do |f| %>
 <div class="row">
   <div class="small-6 columns">
-  <% if @user.errors.any? %>
-    <p>Please correct the following errors:</p>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+    <% if @user.errors.any? %>
+      <p>Please correct the following errors:</p>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
 

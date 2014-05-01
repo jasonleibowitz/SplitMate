@@ -1,19 +1,43 @@
-<div class="avatar-wrap">
-  <%= image_tag user.avatar.url(:medium), class: 'avatar' %>
+<div class="row">
+  <div class="small-2 columns">
+		<div class="avatar-wrap">
+			<%= image_tag user.avatar.url(:medium), class: 'avatar' %>
+  	</div>
+  </div>
 </div>
 
-<p><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></p>
-<p> Email: <%= user.email %></p>
-<% if user.apartment != nil %>
-  <p><%= link_to user.apartment.name, apartment_path(user.apartment) %></p>
-  <p><%= user.apartment.zipcode %></p>
-  <p>My Points Balance: <%= user.points_balance %></p>
-  <p>My Dollar Balance: <%= user.dollar_balance %></p>
-<% end %>
+<br />
 
-<% if user.apartment == nil %>
-  <%= link_to 'Add an Apartment', new_apartment_path %>
-<% end %>
+<div class="row">
+  <div class="small-6 columns">
+		<p>Name: <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></p>
+	</div>
+</div>
 
-<%= link_to 'edit profile', edit_user_path(user) %>
+<div class="row">
+  <div class="small-6 columns">
+		<p> Email: <%= mail_to user.email %></p>
+	</div>
+</div>
+
+<div class="row">
+  <div class="small-6 columns">
+		<% if user.apartment != nil %>
+			 <p>Apartment: <%= link_to user.apartment.name, apartment_path(user.apartment) %></p>
+			 <p>My Points Balance: <%= user.points_balance %></p>
+			 <p>My Dollar Balance: <%= user.dollar_balance %></p>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+  <div class="small-6 columns">	
+		<% if user.apartment == nil %>
+		  <%= link_to 'Add an Apartment', new_apartment_path %>
+		<% end %>
+		<%= link_to 'edit profile', edit_user_path(user) %>
+	</div>
+</div>
+
 <hr>
+

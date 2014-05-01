@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="small-7 small-centered columns end">
+  <div class="small-8 small-centered columns end">
     <div class="avatar-wrap">
       <% if @user.avatar_file_name == nil %>
         <%= image_tag "default_images/J.png", class: 'avatar' %>
@@ -18,14 +18,14 @@
 
 <div class="row">
   <%= form_tag("/users/#{@user.id}/spendpoints", method: "post") do %>
-  <div class="small-5 small-offset-2 columns">
+  <div class="small-6 small-centered columns">
     <%= label_tag 'Action' %>
     <%= select_tag :action, options_for_select([['Pass off Chore - 50 Points', 1]], 1) %>
   </div>
 </div>
 
 <div class="row">
-  <div class="small-5 small-offset-2 columns">
+  <div class="small-6 small-centered columns">
     <%= label_tag 'Roommate' %>
     <% @roommate_array = [] %>
     <% @user.apartment.users.each do |roommate| %>
@@ -38,7 +38,7 @@
 </div>
 
 <div class="row">
-  <div class="small-5 small-offset-2 columns">
+  <div class="small-6 small-centered columns">
     <%= label_tag 'Chore' %>
     <% @chore_array = [] %>
     <% @user.chores.each do |chore| %>
@@ -50,7 +50,7 @@
 
 
 <div class="row">
-  <div class="small-5 small-offset-2 columns">
+  <div class="small-6 small-centered columns">
     <%= submit_tag :submit %>
   </div>
   <% end %>
