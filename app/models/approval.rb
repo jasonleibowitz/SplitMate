@@ -5,6 +5,9 @@ class Approval < ActiveRecord::Base
 
 	after_save :calculate_score, :check_ratio
 
+  validates :chore_history, uniqueness: { scope: :user_id,
+    message: "should only have one vote per user" }
+
 	
 	#note: after_save runs both on create and update, but always after the more specific callbacks after_create and after_update, no matter the order in which the macro calls were executed.
 

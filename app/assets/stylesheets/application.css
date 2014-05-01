@@ -50,10 +50,10 @@
  }
 
  div.vote-button {
-  width: 40px;
+  width: 60px;
   float: right;
   text-align: right;
-  overflow: hidden;
+  /*overflow: hidden;*/
   margin: 0 auto;
   line-height: 10px;
   text-align: center;

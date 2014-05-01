@@ -54,4 +54,52 @@ describe Approval do
     end
   end
 
+  describe "#it ensures that the user has not voted on the same approval twice" do
+    it "makeing sure the score didnt count" do
+      expect(@windex_peephole.approvals.length).to eq(0)
+      @approval_1 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @windex_peephole.reload
+      @approval_2 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @windex_peephole.reload
+      @jason.reload
+      expect(@windex_peephole.approval_points).to eq(1)
+    end
+    it "making sure the approval isn't in the database using approvals.length" do
+      expect(@windex_peephole.approvals.length).to eq(0)
+      @approval_1 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @windex_peephole.reload
+      @approval_2 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @windex_peephole.reload
+      @jason.reload
+      expect(@windex_peephole.approvals.length).to eq(1)
+    end
+    it "making sure the approval isn't in the database using user.approvals.length" do
+      expect(@jason.approvals.length).to eq(0)
+      @approval_1 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @windex_peephole.reload
+      @approval_2 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @approval_3 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @approval_4 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @windex_peephole.reload
+      @jason.reload
+      expect(@jason.approvals.length).to eq(1)
+    end
+    it "makes sure other users can still vote, though" do
+      expect(@jason.approvals.length).to eq(0)
+      @approval_1 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: -1)
+      @windex_peephole.reload
+      @approval_2 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: -1)
+      @windex_peephole.reload
+      @approval_3 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: -1)
+      @windex_peephole.reload
+      @approval_4 = Approval.create(user_id: @vern.id, chore_history_id: @windex_peephole.id, value: -1)
+      @windex_peephole.reload
+      @jason.reload
+      expect(@windex_peephole.approvals.length).to eq(2)
+      expect(@windex_peephole.approval_points).to eq(-2)
+      expect(@vern.approvals.length).to eq(1)
+      expect(@jason.approvals.length).to eq(1)
+    end
+  end
+
 end
