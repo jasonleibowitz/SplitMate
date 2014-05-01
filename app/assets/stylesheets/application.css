@@ -14,6 +14,10 @@
  *= require_tree .
  */
 
+ /*
+ *= require font-awesome
+ */
+
  /**
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
@@ -60,6 +64,10 @@
   vertical-align: middle;
  }
 
+.vote-button img {
+  width: 24px;
+  height: 24px;
+}
 
  .accordion img {
   width: 50px;
@@ -133,4 +141,14 @@ table {
 }
 .small-space {
   margin-bottom: 20px;
+}
+
+.approved {
+  font-size: 12px;
+  color: green;
+}
+
+.rejected {
+  font-size: 12px;
+  color: red;
 }
