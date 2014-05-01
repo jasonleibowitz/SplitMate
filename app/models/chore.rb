@@ -7,44 +7,29 @@ class Chore < ActiveRecord::Base
   validates :name, :points_value, :due_date, presence: true
   validates :points_value, numericality: { only_integer: true, less_than_or_equal_to: 20, greater_than_or_equal_to: 1 }
 
-	# def complete_chore(comments, before_pic, after_pic)
+	def complete_chore(comments)
+    @user = self.user
 
-	# 	@user = self.user
+    # Give user points for completing chore
+    @user.update_points(self.points_value)
+    @user.save!
 
- #    # Give user points for completing chore
-	# 	@user.update_points(self.points_value)
-	# 	@user.save!
+    # If chore had money value, give user that amount and remove it from the chore object
+    if self.dollar_value > 0
+      @user.dollar_balance += self.dollar_value
+      @user.save!
+      self.dollar_value = 0
+      self.save!
+    end
 
- #    # If chore had money value give user that amount and remove it from the chore object
- #    if self.dollar_value != nil || self.dollar_value > 0
- #      @user.dollar_balance += self.dollar_value
- #      @user.save!
- #      self.dollar_value = 0
- #      self.save!
- #    end
+    # Mark chore as unassigned
+    self.user = nil
+    self.save!
 
-	# 	#Mark chore as unassigned
-	# 	self.user = nil
-	# 	self.save
-
- #    # Mark chore's current_due_date as nil
- #    self.current_due_date = nil
-
-	# 	# Create a new chore history after user completed chore
- #    @chore_history = ChoreHistory.new(chore_hist_params)
- #    # @chore_history.comments = comments
- #    @chore_history.chore = self
- #    @chore_history.name = self.name
- #    @chore_history.points_value = self.points_value
- #    @chore_history.user = @user
- #    @chore_history.apartment = @user.apartment
- #    @chore_history.approval_points = 0
- #    @chore_history.approval_ratio = 0
- #    @chore_history.approved = true
- #    @chore_history.save
- #    @chore_history.js_date = @chore_history.created_at.to_i
- #    @chore_history.save!
- #  end
+    # Mark chore's current_due_date as nil
+    self.current_due_date = nil
+    self.save!
+  end
 
   def overdue_chore?
     if self.current_due_date == Date.yesterday
@@ -65,8 +50,8 @@ class Chore < ActiveRecord::Base
     chore_length = (due_on - assigned_on).to_i
     remaining_time = (due_on - today).to_i
     time_passed = (assigned_on - today).to_i.abs
-    return (((time_passed + 0.0) / chore_length)*100) 
-  end   
+    return (((time_passed + 0.0) / chore_length)*100)
+  end
 
   def assign_chore(user)
     self.user = user

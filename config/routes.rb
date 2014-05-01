@@ -22,6 +22,12 @@ SplitmateApp::Application.routes.draw do
   post '/chores/lastmonth' => 'chores#last_month'
   get '/users/:id/redeempoints' => 'users#redeem_points'
   post '/users/:id/spendpoints' => 'users#spendpoints'
+  post '/approvals' => 'approvals#create'
+  put '/approvals' => 'approvals#update'
+  delete '/approvals' => 'approvals#destroy'
+
+  get '/users/:id/makepayment' => 'users#make_payment'
+  post '/users/:id/pay' => 'users#pay'
 
   root to: 'sessions#new'
 

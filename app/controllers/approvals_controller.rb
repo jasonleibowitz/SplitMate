@@ -5,34 +5,46 @@ class ApprovalsController < ApplicationController
 	### Because of this, it makes more sense to respond with a JSON object of the chore_history object that was voted on, not the actual vote object itself.  This is because approval votes can be deleted, in which case there would be nothing to return.  It also DRY's up Javascript on frontend views because we work with only one object. ###
 
 	def create
-  	@approval = Approval.new(approval_params)
+  	@approval = Approval.new(chore_history_id: params[:chore_history_id], value: params[:value])
   	@approval.user_id = current_user.id
-  	@approval.save
+  	@approval.save!
   	@chore_history = @approval.chore_history
   		respond_to do |format|
-      format.html
-      format.json { render json: @chore_history.to_json }
-    end
+        format.html { }
+        format.json { render json: @approval.to_json }
+        format.js   { }
+      end
   end
 
   def update
-  	@approval = Approval.find(params[:id])
-  	@approval.update(approval_params)
-  	@chore_history = @approval.chore_history
-  	respond_to do |format|
-      format.html
-      format.json { render json: @chore_history.to_json }
+    @user = current_user
+    approval_search = @user.approvals.select {|approval| approval.chore_history_id = params[:approval][:chore_history_id]}
+    @approval = approval_search[0]
+    chore_history = @approval.chore_history
+  	if @approval.update(value: params[:approval][:value])
+      chore_history.calculate_score
+      # @chore_history.check_ratio
+      respond_to do |format|
+        format.html
+        format.json { render json: @approval.to_json }
+      end
+    elsif 
+      @message = "error couldn't update"
+      return @message
     end
   end
 
   def destroy
-  	approval = Approval.find(params[:id])
-  	@chore_history = approval.chore_history
+    @user = current_user
+    approval_search = @user.approvals.select {|approval| approval.chore_history_id = params[:approval][:chore_history_id]}
+    @approval = approval_search[0]
+  	@chore_history = @approval.chore_history
   	if @approval.destroy 
   		@chore_history.calculate_score
+      # @chore_history.check_ratio
   		respond_to do |format|
 	      format.html
-	      format.json { render json: @chore_history.to_json }
+	      format.json { render json: @approval.to_json }
 	    end
   	elsif 
   		@message = "error couldn't destroy"
@@ -41,8 +53,8 @@ class ApprovalsController < ApplicationController
   end
 
   private
-  def approval_params
-  	params.require(:approval).permit(:chore_id, :value)
-  end
+  # def approval_params
+  # 	params.require(:approval).permit(:chore_history_id, :value)
+  # end
 
 end

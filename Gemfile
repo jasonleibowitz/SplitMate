@@ -37,6 +37,7 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'shoulda-matchers'
+  gem "shoulda-callback-matchers", "~> 1.0"
 end
 
 group :development do
@@ -58,6 +59,10 @@ gem 'foundation-rails'
 gem 'area'
 
 gem 'aws-sdk', '~> 1.5.7'
+
+group :test do
+  gem "shoulda-callback-matchers", "~> 1.0"
+end
 
 
 # Use ActiveModel has_secure_password

@@ -1,0 +1,7 @@
+<dl class="voting-container">
+
+	<!-- loop through all the chores -->
+	<% @completed_chores.each do |chore| %> 
+		<%= render partial: 'chores/chore_approval', locals: {chore: chore} %>
+  <% end %> <!-- and now i've finally drawn one chore -->
+</dl>

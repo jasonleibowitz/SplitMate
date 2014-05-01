@@ -16,7 +16,6 @@ describe User do
       expect(@vern.points_balance).to eq(10)
       expect(@vern.points_lifetime).to eq(10)
       expect(@vern.completed_week_points).to eq(10)
-      expect(@vern.total_week_points).to eq(10)
     end
   end
 

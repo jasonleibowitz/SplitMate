@@ -27,4 +27,9 @@ class User < ActiveRecord::Base
     # self.save
   end
 
+  def make_payment(roommate, payment)
+    # Reduce user's dollar_balance by payment amount
+    self.dollar_balance += payment
+  end
+
 end
