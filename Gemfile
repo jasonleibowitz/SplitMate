@@ -60,6 +60,10 @@ gem 'area'
 
 gem 'aws-sdk', '~> 1.5.7'
 
+group :test do
+  gem "shoulda-callback-matchers", "~> 1.0"
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
