@@ -5,6 +5,32 @@
         1,
         null
       ],
+      "/Users/wdi/Documents/hedly/SplitMate/app/mailers/user_mailer.rb": [
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
       "/Users/wdi/Documents/hedly/SplitMate/app/models/apartment.rb": [
         1,
         null,
@@ -234,6 +260,6 @@
         null
       ]
     },
-    "timestamp": 1398983072
+    "timestamp": 1398983452
   }
 }
