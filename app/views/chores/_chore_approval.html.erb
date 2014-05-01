@@ -19,9 +19,7 @@
 	 <div class="vote-button">
 		<%= image_tag("voted-icon-24.png") %>
 	</div>
-		 <% else if chore.user == current_user %>
-		
-		 <% else %>
+		 <% elsif chore.user != current_user %>
 		 <div class="vote-button"> 
 	   <%= form_tag("/approvals", method: "post", remote: true) do %>
 	   	<%= hidden_field_tag(:chore_history_id, chore.id) %>
