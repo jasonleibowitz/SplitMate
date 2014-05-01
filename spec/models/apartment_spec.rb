@@ -11,7 +11,6 @@ describe Apartment do
   it { should validate_presence_of :zipcode }
   it { should validate_numericality_of :zipcode }
   it { should ensure_length_of(:zipcode).is_equal_to(5) }
-
   it { have_many :users }
   it { have_many :chores }
 
