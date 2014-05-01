@@ -6,7 +6,7 @@ class ChoresController < ApplicationController
 
   def show
     @chore = Chore.find(params[:id])
-    # @chore_history = ChoreHistory.new
+    @remaining_percentage = @chore.calculate_percentage
   end
 
   def new
@@ -45,9 +45,7 @@ class ChoresController < ApplicationController
   def assign_chore
     @chore = Chore.find(params[:id])
     @user = current_user
-
     @chore.assign_chore(@user)
-
     redirect_to @user
   end
 

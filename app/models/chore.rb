@@ -57,9 +57,21 @@ class Chore < ActiveRecord::Base
     end
   end
 
+
+  def calculate_percentage
+    today = Date.today
+    due_on = self.current_due_date
+    assigned_on = self.current_assigned_date
+    chore_length = (due_on - assigned_on).to_i
+    remaining_time = (due_on - today).to_i
+    time_passed = (assigned_on - today).to_i.abs
+    return (((time_passed + 0.0) / chore_length)*100) 
+  end   
+
   def assign_chore(user)
     self.user = user
     self.current_due_date = Chronic.parse(self.due_date)
+    self.current_assigned_date = Date.today
     self.save!
 
     user.total_week_points += self.points_value
@@ -67,3 +79,4 @@ class Chore < ActiveRecord::Base
   end
 
 end
+
