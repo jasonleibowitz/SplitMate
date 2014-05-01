@@ -1,6 +1,6 @@
 class Apartment < ActiveRecord::Base
 
-  
+  after_validation :zipcode_validation
 
   has_many :users
   has_many :chores
@@ -8,9 +8,7 @@ class Apartment < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   validates :name, :street, :zipcode, presence: true
-
   validates_format_of :zipcode, :with => /\A\d{5}(-\d{4})?\z/, :message => "should be in the form 12345 or 12345-1234"
-  after_validation :zipcode_validation
   # validates :zipcode, numericality: { only_integer: true }
   # validates :zipcode, length: { is: 5 }
 
