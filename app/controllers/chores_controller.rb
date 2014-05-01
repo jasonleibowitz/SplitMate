@@ -42,6 +42,16 @@ class ChoresController < ApplicationController
     @chore.destroy
   end
 
+  def drop_chore_assign
+    @chore = Chore.find(params[:chore_id])
+    @user = User.find(params[:user_id])
+    @chore.assign_chore(@user)
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @chore.to_json }
+    end
+  end
+
   def assign_chore
     @chore = Chore.find(params[:id])
     @user = current_user

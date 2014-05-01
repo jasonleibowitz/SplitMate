@@ -1,7 +1,7 @@
 <% @chores.each do |chore| %>
   <% if chore.user == nil %>
     <%= content_tag_for(:div, chore) %>
-      <dl class="accordion draggable" id="<%= dom_id(chore) %>" data-accordion>
+      <dl class="accordion draggable" id="<%= chore.id %>" data-accordion>
         <dd>
           <% if chore.dollar_value > 0 %>
             <a href="#chore<%= chore.id %>"><%= chore.name %> (<%= chore.points_value %>) | <span class="alert round label">$<%= chore.dollar_value %></span></a>

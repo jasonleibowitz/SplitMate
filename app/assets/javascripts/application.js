@@ -23,8 +23,26 @@ $(function() {
     $( ".draggable" ).draggable();
     $( ".droppable" ).droppable({
       drop: function( event, ui ) {
-       console.log($(this));
-      }
+        var roommate_div = $(this);
+        $.ajax({
+          url: '/dropchore',
+          method: 'put',
+          data: {
+            chore_id: ui.draggable.attr('id'),
+            user_id: $(this).attr('id')
+          },
+          dataType: 'json'
+        }).done(function(data) {
+        console.log(data);
+       ui.draggable.empty();
+       roommate_div.append("Chore Assigned!");
+       roommate_div.parent().addClass("chore-dropped");
+       console.log('you dropped chore: ' + ui.draggable.attr('id'));
+       console.log('onto this user: ' + roommate_div.attr('id'));
+
+        }); // end .done
+
+      } //idk what this is
     });
   });
 

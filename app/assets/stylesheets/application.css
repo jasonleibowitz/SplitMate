@@ -13,13 +13,6 @@
  *= require_tree .
  *= require jquery.ui.all
  */
-
-<<<<<<< HEAD
-=======
- /*
- */
->>>>>>> 973cae47655ae8cb9ca99c04e12c62f6640f5238
-
  /**
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
@@ -197,4 +190,8 @@ h1.centered-text {
 .rejected {
   font-size: 12px;
   color: red;
+}
+
+.chore-dropped {
+  background-color: lightgreen;
 }
