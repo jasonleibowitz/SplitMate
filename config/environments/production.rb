@@ -72,7 +72,7 @@ SplitmateApp::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 25,
-    domain:               'http://localhost:3000/',
+    domain:               'http://splitmate.herokuapp.com/',
     user_name:            ENV["GMAIL_USERNAME"],
     password:             ENV["GMAIL_PASSWORD"],
     authentication:       'plain',

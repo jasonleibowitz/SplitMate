@@ -3,13 +3,13 @@ class UserMailer < ActionMailer::Base
 
   def welcome_user(user)
     @user = user
-    @url = 'http://splitmate.me/login'
+    @url = 'http://splitmate.herokuapp.com/login'
     mail(to: @user.email, subject: 'Welcome to SplitMate')
   end
 
   def roommate_welcome(user)
     @user = user
-    @url = 'http://localhost:3000/login'
+    @url = 'http://splitmate.herokuapp.com/login'
     mail(to: @user.email, subject: 'You Have Been Signed Up For SplitMate By Your Roommate')
   end
 
@@ -17,7 +17,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @roommate = roommate
     @chore = chore
-    @url = 'http://localhost:3000/users'
+    @url = 'http://splitmate.herokuapp.com/users'
     mail(to: @user.email, subject: 'You Just Got Chored!')
   end
 
