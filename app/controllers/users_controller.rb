@@ -109,6 +109,20 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def make_payment
+    @user = User.find(params[:id])
+  end
+
+  def pay
+    @user = User.find(params[:id])
+    @roommate = User.find(params[:roommate])
+    @payment = params[:payment]
+
+    @user.make_payment(@roommate, @payment)
+    redirect_to @user
+
+  end
+
 
   private
   def user_params

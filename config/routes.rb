@@ -26,6 +26,9 @@ SplitmateApp::Application.routes.draw do
   put '/approvals' => 'approvals#update'
   delete '/approvals' => 'approvals#destroy'
 
+  get '/users/:id/makepayment' => 'users#make_payment'
+  post '/users/:id/pay' => 'users#pay'
+
   root to: 'users#index'
 
 end
