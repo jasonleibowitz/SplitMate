@@ -37,7 +37,7 @@ task :clean_week_points => :environment do
 
 end
 
-task :check_overdue_chores => :environment do
+task :assign_orphan_chores => :environment do
   desc "Iterates over all unassigned chores and checks if appartment chore assignment day has passed automatically assigns chores based on points. It assigns the chore with the most points to the roommate with the least points."
   @unassigned_chores = Chore.where(user_id: nil)
 
