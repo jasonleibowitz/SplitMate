@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="small-8 small-centered columns end">
+    <div class="avatar-wrap">
+      <% if @user.avatar_file_name == nil %>
+        <%= image_tag @user.default_avatar, class: 'avatar' %>
+      <% else %>
+        <%= image_tag @user.avatar.url(:medium), class: 'avatar' %>
+      <% end %>
+    </div>
+    <div class="apt-header">
+      <h1>Redeem Points</h1>
+      <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+      <p class='email-address hide'><%= @user.email %></p>
+      <h6>Points Balance: <%= @user.points_balance %> | Dollar Balance: $<%= @user.dollar_balance %></h6>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <%= form_tag("/users/#{@user.id}/spendpoints", method: "post") do %>
+  <div class="small-6 small-centered columns">
+    <%= label_tag 'Action' %>
+    <%= select_tag :action, options_for_select([['Pass off Chore - 50 Points', 1]], 1) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <%= label_tag 'Roommate' %>
+    <% @roommate_array = [] %>
+    <% @user.apartment.users.each do |roommate| %>
+      <% unless roommate.id == @user.id %>
+        <% @roommate_array.push(["#{roommate.first_name} #{roommate.last_name}", roommate.id]) %>
+      <% end %>
+    <% end %>
+    <%= select_tag :roommate, options_for_select(@roommate_array, @roommate_array.first[1]) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <%= label_tag 'Chore' %>
+    <% @chore_array = [] %>
+    <% @user.chores.each do |chore| %>
+      <% @chore_array.push(["#{chore.name} (#{chore.points_value})", chore.id]) %>
+    <% end %>
+      <%= select_tag :chore, options_for_select(@chore_array, @chore_array.first[1]) %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <%= submit_tag :submit %>
+  </div>
+  <% end %>
+</div>

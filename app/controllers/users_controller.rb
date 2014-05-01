@@ -11,6 +11,11 @@ class UsersController < ApplicationController
     @chores = @user.chores
     # @completed_chores = @user.chore_histories
     @sorted_chore_histories = @user.chore_histories.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html { }
+      format.json { render json: {msg: params[:data]} }
+    end
   end
 
   def new
@@ -66,6 +71,7 @@ class UsersController < ApplicationController
     @user.points_lifetime = 0
     @user.completed_week_points = 0
     @user.total_week_points = 0
+    @user.dollar_balance = 0
     @user.admin = false
     @user.password = 'password'
     @user.password_confirmation = 'password'
@@ -75,6 +81,58 @@ class UsersController < ApplicationController
     end
     redirect_to @apartment
   end
+
+  def redeem_points
+    @user = User.find(params[:id])
+
+  end
+
+  def spendpoints
+    cost_key = {"spendpoints" => 50}
+
+    @user = User.find(params[:id])
+    @chore = Chore.find(params[:chore])
+    @roommate = User.find(params[:roommate])
+
+    # Assign the chore to the chosen roommate
+    @chore.assign_chore(@roommate)
+
+    # Remove possible points from this user's total week points
+    # and remove cost to reassign chore from user
+    @user.total_week_points -= @chore.points_value
+    @user.points_balance -= cost_key[params[:action]]
+    @user.save!
+
+    # Send email to roommate letting them know they've been given a chore
+    UserMailer.chored(@roommate, @user, @chore).deliver
+
+    redirect_to @user
+  end
+
+  def make_payment
+    @user = User.find(params[:id])
+  end
+
+  def pay
+    @user = User.find(params[:id])
+    @roommate = User.find(params[:roommate])
+    @payment = params[:payment]
+
+    @user.make_payment(@roommate, @payment)
+    redirect_to @user
+
+  end
+
+  def home
+    if current_user && current_user.apartment != nil
+      redirect_to current_user.apartment
+    elsif current_user && current_user.apartment == nil
+      redirect_to current_user
+    else
+      redirect_to login_path
+    end
+  end
+
 
   private
   def user_params

@@ -1,0 +1,49 @@
+<div class="small-space"></div>
+<div class="row">
+    <div class="small-7 small-centered columns end">
+      <div class="avatar-wrap">
+        <% if @user.avatar_file_name == nil %>
+          <%= image_tag @user.default_avatar, class: 'avatar' %>
+        <% else %>
+          <%= image_tag @user.avatar.url(:medium), class: 'avatar' %>
+        <% end %>
+      </div>
+      <div class="apt-header">
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <p class='email-address hide'><%= @user.email %></p>
+        <h3><%= link_to @user.apartment.name, apartment_path(@user.apartment) %></h3>
+        <h6>Points Balance: <%= @user.points_balance %> | Dollar Balance: <%= @user.dollar_balance < 0 ? "-$" : "$" %><%= @user.dollar_balance.abs %></h6>
+      </div>
+    </div>
+  </div>
+<div class="row">
+  <%= form_tag "/users/#{@user.id}/pay", method: 'post', class: "complete-form" do %>
+    <div class="small-4 small-offset-3 columns">
+      <%= label_tag 'Amount to Pay' %>
+      <%= number_field_tag :payment, @user.dollar_balance.abs, in: 1..@user.dollar_balance.abs  %>
+    </div>
+</div>
+
+<div class="row">
+  <div class="small-4 small-offset-3 columns">
+    <%= label_tag 'Roommate' %>
+    <% @roommate_array = [] %>
+    <% @user.apartment.users.each do |roommate| %>
+      <% unless roommate.id == @user.id %>
+        <% @roommate_array.push(["#{roommate.first_name} #{roommate.last_name}", roommate.id]) %>
+      <% end %>
+    <% end %>
+    <%= select_tag :roommate, options_for_select(@roommate_array, @roommate_array.first[1]) %>
+  </div>
+</div>
+
+    <%= hidden_field_tag 'chore_id', params[:id] %>
+
+<div class="row">
+  <div class="small-4 small-offset-3 columns">
+    <%= submit_tag :pay %>
+  </div>
+</div>
+
+  <% end %>
+</div>

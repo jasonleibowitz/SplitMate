@@ -6,24 +6,42 @@
 <% else %>
 	<% chore_approval_class = "unvoted" %>
 <% end %>
-
 		
 <div class="vote-item <%= chore_approval_class %>" id="<%= dom_id(chore, "approval") %>">
+
 	 <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>">
 	 	<%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   
 	 </a> 
 	 <span id="chore-points-<%=chore.id%>">
-	 	<%= chore.approval_points %>
+	 	 <%= chore.approval_points %> Pts.
+
+	 <% if Approval.find_by(chore_history: chore, user: current_user) %>
+	 <div class="vote-button">
+		<%= image_tag("voted-icon-24.png") %>
+	</div>
+		 <% elsif chore.user != current_user %>
+		 <div class="vote-button"> 
+	   <%= form_tag("/approvals", method: "post", remote: true) do %>
+	   	<%= hidden_field_tag(:chore_history_id, chore.id) %>
+	   	<%= hidden_field_tag(:value, 1) %>
+	   	<%= image_submit_tag("thumbs-up-icon.png") %>
+	   <% end %>
+
+	 <%= form_tag("/approvals", method: "post", remote: true) do %>
+   	<%= hidden_field_tag(:chore_history_id, chore.id) %>
+   	<%= hidden_field_tag(:value, -1) %>
+   	<%= image_submit_tag("thumbs-down-icon.png") %>
+		 <% end %>
+		</div>
+
+	 <% end %> 
+
+	 
+
 	 </span> 	 	 
-	 <%= form_for Approval.new, remote: true do |f| %>
-	   <%= f.hidden_field :chore_history_id, value: chore.id %>
-	   <%= f.hidden_field :value, value: 1 %>
-	   <%= f.submit "Upvote" %>
-   <% end %>
- 	 <%= form_for Approval.new, remote: true do |f| %>
-	   <%= f.hidden_field :chore_history_id, value:  chore.id %>
-	   <%= f.hidden_field :value, value:  -1 %>
-	   <%= f.submit "Downvote" %>
-   <% end %>
+		<% if !chore.approved %>
+		<br>
+			<span class="rejected">[Chore Rejected]</span>
+		<% end %>
 
 </div>	   		 

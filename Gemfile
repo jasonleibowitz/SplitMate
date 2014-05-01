@@ -58,6 +58,16 @@ gem 'foundation-rails'
 
 gem 'area'
 
+gem 'aws-sdk', '~> 1.5.7'
+
+gem 'simplecov', :require => false, :group => :test
+
+gem 'rails_12factor', group: :production
+
+ruby "2.1.0"
+
+gem 'jquery-ui-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -70,4 +80,4 @@ gem 'area'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'jquery-ui-rails'
+

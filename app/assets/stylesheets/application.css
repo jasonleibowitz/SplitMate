@@ -14,6 +14,11 @@
  *= require jquery.ui.all
  */
 
+<<<<<<< HEAD
+=======
+ /*
+ */
+>>>>>>> 973cae47655ae8cb9ca99c04e12c62f6640f5238
 
  /**
  * For modern browsers
@@ -61,6 +66,10 @@
   vertical-align: middle;
  }
 
+.vote-button img {
+  width: 24px;
+  height: 24px;
+}
 
  .accordion img {
   width: 50px;
@@ -83,6 +92,7 @@ div.avatar-wrap {
   border-radius: 50%;
   overflow: hidden;
   margin: 30px auto 0 auto;
+  border: 1px solid black;
 }
 
 div.avatar-wrap-thumb {
@@ -119,6 +129,7 @@ div.avatar-wrap-left {
   overflow: hidden;
   margin: 30px auto 0 auto;
   float: left;
+  border: 1px solid black;
 }
 
 div.avatar-wrap-right {
@@ -130,6 +141,7 @@ div.avatar-wrap-right {
   overflow: hidden;
   margin: 30px auto 0 auto;
   float: right;
+  border: 1px solid black;
 }
 
 div.leaderboard-row{
@@ -154,9 +166,6 @@ div.red {
 table {
   margin: 0 auto;
 }
-.small-space {
-  margin-bottom: 20px;
-}
 
 .small-space {
   margin-bottom: 40px;
@@ -164,4 +173,28 @@ table {
 
 .centered-text {
   text-align: center;
+}
+h1.centered-text {
+  text-align: center;
+}
+
+.chore-img-wrap {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.chore-img {
+  width: 300px;
+  height: 200px;
+}
+
+.approved {
+  font-size: 12px;
+  color: green;
+}
+
+.rejected {
+  font-size: 12px;
+  color: red;
 }

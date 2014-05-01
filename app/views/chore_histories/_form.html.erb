@@ -1,6 +1,7 @@
 <div class="small-space"></div>
 <div class="row">
-  <%= form_tag 'completechore', method: 'post', class: "complete-form" do %>
+
+  <%= form_tag 'completechore', method: 'post', :multipart => true, class: "complete-form" do %>
 
     <div class="small-6 small-centered columns">
       <div class="row collapse">
@@ -19,7 +20,6 @@
       </div>
       </div>
     </div>
-
 
     <div class="small-6 small-centered columns">
       <%= label_tag 'comments' %>

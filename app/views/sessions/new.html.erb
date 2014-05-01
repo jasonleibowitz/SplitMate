@@ -1,20 +1,40 @@
-<h1>Login</h1>
+<div class="row">
+  <div class="small-space"></div>
+  <div class="small-6 columns">
+    <h1>Login</h1>
+    <div class="small-space"></div>
+    <div class="small-6 columns">
+      <%= flash[:login_error] %>
+    </div>
+  </div>
+</div>
+
 <%= form_tag sessions_path do %>
-  <div>
+<div class="row">
+  <div class="small-6 columns">
     <%= label_tag :email %>
     <%= text_field_tag :email %>
   </div>
+</div>
 
-  <div>
+<div class="row">
+  <div class="small-6 columns">
     <%= label_tag :password %>
     <%= password_field_tag :password %>
   </div>
+</div>
 
-  <div>
+<div class="row">
+  <div class="small-6 columns">
     <%= submit_tag :login %>
   </div>
-
-  <%= flash[:login_error] %>
-  <p>Don't have an account? <%= link_to 'Create an Account', new_user_path %></p>
-
+</div>
 <% end %>
+
+<div class="row">
+  <div class="small-6 columns">
+  <p>Don't have an account? <%= link_to 'Create an Account', new_user_path %></p>
+  </div>
+</div>
+
+

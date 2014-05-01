@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
     self.points_balance += points_value
     self.points_lifetime += points_value
     self.completed_week_points += points_value
-    self.total_week_points += points_value
     self.save
   end
 
@@ -26,6 +25,12 @@ class User < ActiveRecord::Base
     url = 'default_images/' + letter.upcase + '.png'
     self.default_avatar = url
     # self.save
+  end
+
+  def make_payment(roommate, payment)
+    # Reduce user's dollar_balance by payment amount
+    self.dollar_balance += payment.to_i
+    self.save
   end
 
 end

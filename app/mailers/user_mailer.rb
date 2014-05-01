@@ -13,4 +13,12 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'You Have Been Signed Up For SplitMate By Your Roommate')
   end
 
+  def chored(user, roommate, chore)
+    @user = user
+    @roommate = roommate
+    @chore = chore
+    @url = 'http://localhost:3000/users'
+    mail(to: @user.email, subject: 'You Just Got Chored!')
+  end
+
 end

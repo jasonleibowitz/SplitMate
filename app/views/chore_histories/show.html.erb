@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="small-6 columns">
+    <div class="avatar-wrap-right">
+      <% if @chore_history.apartment.avatar_file_name == nil %>
+        <%= image_tag @chore_history.apartment.default_avatar, class: 'avatar' %>
+      <% else %>
+        <%= image_tag @chore_history.apartment.avatar.url(:medium), class: 'avatar' %>
+      <% end %>
+    </div> <!-- END AVATAR-WRAP-RIGHT -->
+  </div> <!-- END SMALL-5 COLUMNS -->
+  <div class="small-6 columns">
+    <div class="avatar-wrap-left">
+      <% if @chore_history.user.avatar_file_name == nil %>
+        <%= image_tag "#{@chore_history.user.default_avatar}", class: 'avatar' %>
+      <% else %>
+        <%= image_tag @chore_history.user.avatar.url(:medium), class: 'avatar' %>
+      <% end %>
+    </div> <!-- END AVATAR-WRAP-LEFT -->
+  </div> <!-- END SMALL-5 COLUMNS -->
+</div> <!-- END ROW -->
+
+<div class="row">
+  <div class="small-space"></div>
+  <div class="small-4 small-centered columns centered-text">
+    <h3><%= @chore_history.name %></h3>
+    <h6><%= @chore_history.points_value == 1 ? "#{@chore_history.points_value} Point" : "#{@chore_history.points_value} Points" %> | Completed on <%= @chore_history.created_at.strftime "%b %e, %Y" %></h6>
+  </div> <!-- END SMALL-4 SMALL-CENTERED -->
+</div> <!-- END ROW -->
+
+
+<% if @chore_history.avatar_file_name != nil %>
+  <div class="small-space"></div>
+
+  <div class="row">
+    <div class="small-10 small-centered columns centered-text">
+      <%= image_tag @chore_history.avatar.url(:medium), class: 'th chore-img' %>
+      <%= image_tag @chore_history.after_picture(:medium), class: 'th chore-img' %>
+    </div>
+
+  <div class="row">
+    <div class="small-3 small-offset-2 columns">
+      <h4>Before Picture:</h4>
+    </div>
+    <div class="small-4 columns">
+      <h4>After Picture</h4>
+    </div>
+  </div>
+<% end %>
+
+<div class="small-space"></div>
+
+<div class="row">
+  <div class="small-6 small-centered columns panel">
+    <h4>Comments:</h4>
+    <p><%= @chore_history.comments %></p>
+  </div>
+</div>
+
+

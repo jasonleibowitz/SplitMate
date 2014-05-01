@@ -19,13 +19,13 @@ class Apartment < ActiveRecord::Base
   end
 
   def add_default_chores
-    @toilet = Chore.new(name: "Clean the toilet", points_value: 10, due_date: "Sunday", apartment: self)
+    @toilet = Chore.new(name: "Clean the toilet", points_value: 10, due_date: "Sunday", apartment: self, dollar_value: 0)
     @toilet.save!
-    @living_room = Chore.new(name: "Clean the living room", points_value: 10, due_date: "Sunday", apartment: self)
+    @living_room = Chore.new(name: "Clean the living room", points_value: 10, due_date: "Sunday", apartment: self, dollar_value: 0)
     @living_room.save!
-    @kitchen = Chore.new(name: "Clean the kitchen", points_value: 10, due_date: "Sunday", apartment: self)
+    @kitchen = Chore.new(name: "Clean the kitchen", points_value: 10, due_date: "Sunday", apartment: self, dollar_value: 0)
     @kitchen.save
-    @trash = Chore.new(name: "Take the trash out", points_value: 4, due_date: "Sunday", apartment: self)
+    @trash = Chore.new(name: "Take the trash out", points_value: 4, due_date: "Sunday", apartment: self, dollar_value: 0)
     @trash.save
   end
 

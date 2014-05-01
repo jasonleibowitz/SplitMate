@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429151706) do
+ActiveRecord::Schema.define(version: 20140430151607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140429151706) do
     t.string   "default_avatar"
     t.float    "latitute"
     t.float    "longitude"
+    t.string   "chore_assignment_day"
   end
 
   create_table "approvals", force: true do |t|
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140429151706) do
     t.string   "after_picture_content_type"
     t.integer  "after_picture_file_size"
     t.datetime "after_picture_updated_at"
+    t.integer  "js_date"
   end
 
   add_index "chore_histories", ["chore_id"], name: "index_chore_histories_on_chore_id", using: :btree
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 20140429151706) do
     t.integer  "apartment_id"
     t.string   "due_date"
     t.date     "current_due_date"
+    t.integer  "dollar_value"
+    t.date     "current_assigned_date"
   end
 
   create_table "users", force: true do |t|
