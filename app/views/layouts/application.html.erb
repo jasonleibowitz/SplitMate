@@ -15,7 +15,11 @@
       <nav class="top-bar" data-topbar>
         <ul class="title-area">
           <li class="name">
-            <h1><a href="#">SplitMate</a></h1>
+            <% if current_user && current_user.apartment != nil %>
+              <h1> <%= link_to 'SplitMate', apartment_path(current_user.apartment) %></h1>
+            <% else %>
+              <h1><a href="#">SplitMate</a></h1>
+            <% end %>
           </li>
            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
           <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -24,7 +28,7 @@
           <!-- Right Nav Section -->
           <ul class="right">
           <% if current_user && current_user.apartment != nil %>
-            <li class="active"><a href="#"><%= link_to "#{current_user.first_name} #{current_user.last_name} (#{current_user.points_balance})", apartment_path(current_user.apartment) %></a></li>
+            <li class="active"><a href="#"><%= link_to "#{current_user.first_name} #{current_user.last_name} (#{current_user.points_balance})", user_path(current_user) %></a></li>
           <% elsif current_user && current_user.apartment == nil %>
             <li class="active"><%= current_user.first_name %> <%= current_user.last_name %> (<%= current_user.points_balance %>)</li>
           <% end %>
@@ -32,7 +36,7 @@
               <a href="#">Menu</a>
               <ul class="dropdown">
                 <% if current_user %>
-                <li><%= link_to 'Profile', user_path(current_user) %></li>
+                <li><%= link_to 'Profile Settings', edit_user_path(current_user) %></li>
                 <% end %>
 
                 <% if current_user && current_user.apartment != nil %>
