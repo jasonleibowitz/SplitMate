@@ -17,8 +17,6 @@ describe User do
   it { should have_many :approvals }
 
 
-
-
   describe "#update points" do
     it "should be able to update points" do
       @vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0)
@@ -31,28 +29,29 @@ describe User do
       expect(@vern.completed_week_points).to eq(10)
     end
   end
-end
 
 
-describe "#default avatar" do
-  it "should set a default avatar when picture not uploaded" do
-    @vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0)
+  describe "#default avatar" do
+    it "should set a default avatar when picture not uploaded" do
+      @vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0)
 
-    @vern.default_avatar
+      @vern.default_avatar
 
-    expect(@vern.default_avatar).to eq("default_images/V.png")
+      expect(@vern.default_avatar).to eq("default_images/V.png")
 
     end
   end
 
-describe "#make_payment" do
-  it "should exchange money between roommates" do
-    @vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, dollar_balance: 10)
-    @eric = User.create(first_name: "Eric", last_name: "Resnick", email: 'eric@splitmate.com', password: '56789', password_confirmation: '56789', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, dollar_balance: 10)
+  describe "#make_payment" do
+    it "should exchange money between roommates" do
+      @vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, dollar_balance: 10)
+      @eric = User.create(first_name: "Eric", last_name: "Resnick", email: 'eric@splitmate.com', password: '56789', password_confirmation: '56789', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, dollar_balance: 10)
 
-    @vern.make_payment(@eric, 5)
+      @vern.make_payment(@eric, 5)
 
-    expect(@vern.dollar_balance).to eq(15)
+      expect(@vern.dollar_balance).to eq(15)
+    end
   end
+
 end
 
