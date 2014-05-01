@@ -1,4 +1,5 @@
 require_relative '../spec_helper.rb'
+
 describe ChoreHistory do
 
 	# def calculate_score
@@ -10,7 +11,7 @@ it { should have_many :approvals }
 
 
 describe "poorly done chores don't count" do
-	it "should make sure a poorly done chore does not count towards the users' points" do
+	it "should make sure a poorly done chore not count towards the users' points and remove the dollar value of the chore from the user's dollar balance" do
 	@ga = Apartment.create(name: "GA Speakeasy", street: '10 E 21st Street', apt: '4', zipcode: 10010)
 	@vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 40, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, apartment: @ga, dollar_balance: 0)
     @jason = User.create(first_name: "Jason", last_name: "Leibowitz", email: 'jason@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, apartment: @ga, dollar_balance: 0 )
@@ -23,7 +24,7 @@ describe "poorly done chores don't count" do
 
     @chore.complete_chore("test")
 
-    completed_chore = ChoreHistory.create(name: "Clean the toilet", points_value: 10, comments: "test", user: @vern, chore_id: 5, approval_points: 0, approval_ratio: 0, approved: true, apartment: @ga)
+    completed_chore = ChoreHistory.create(name: "Clean the toilet", points_value: 10, comments: "test", user: @vern, chore: @chore, approval_points: 0, approval_ratio: 0, approved: true, apartment: @ga)
 
 		@vern.reload
         @ga.reload
@@ -48,6 +49,7 @@ describe "poorly done chores don't count" do
     expect(completed_chore.approval_points).to eq(-2)
     expect(completed_chore.apartment.users.length).to eq(5)
     expect(@vern.points_balance).to eq(40)
+    expect(@vern.dollar_balance).to eq(-10)
 
 
 		end

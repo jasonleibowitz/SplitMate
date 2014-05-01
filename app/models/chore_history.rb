@@ -31,7 +31,10 @@ class ChoreHistory < ActiveRecord::Base
       if (self.approval_points + remaining_votes) < 0
         self.user.update_points(deduction)
         self.approved = false
+        self.chore.dollar_value += self.points_value
+        self.user.dollar_balance -= self.chore.dollar_value
         self.save
+        self.user.save
       end
     end
 
