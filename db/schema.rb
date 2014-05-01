@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429151706) do
+ActiveRecord::Schema.define(version: 20140430151607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140429151706) do
     t.string   "default_avatar"
     t.float    "latitute"
     t.float    "longitude"
+    t.string   "chore_assignment_day"
   end
 
   create_table "approvals", force: true do |t|
@@ -44,9 +45,9 @@ ActiveRecord::Schema.define(version: 20140429151706) do
     t.text     "comments"
     t.integer  "user_id"
     t.integer  "apartment_id"
-    t.integer  "chore_id"
     t.integer  "approval_points"
     t.integer  "approval_ratio"
+    t.integer  "chore_id"
     t.boolean  "approved"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -69,6 +70,8 @@ ActiveRecord::Schema.define(version: 20140429151706) do
     t.integer  "apartment_id"
     t.string   "due_date"
     t.date     "current_due_date"
+    t.integer  "dollar_value"
+    t.date     "current_assigned_date"
   end
 
   create_table "users", force: true do |t|

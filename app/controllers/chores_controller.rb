@@ -6,6 +6,7 @@ class ChoresController < ApplicationController
 
   def show
     @chore = Chore.find(params[:id])
+    @remaining_percentage = @chore.calculate_percentage
   end
 
   def new
@@ -45,6 +46,7 @@ class ChoresController < ApplicationController
     @user = current_user
     @chore.user = @user
     @chore.current_due_date = Chronic.parse(@chore.due_date)
+    @chore.current_assigned_date = Chronic.parse('today')
     @chore.save!
     redirect_to @user
   end
