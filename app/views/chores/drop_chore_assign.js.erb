@@ -1,0 +1,10 @@
+
+<% if @it_worked == true %>
+console.log('we just dropped a new chore bro');
+var roommate = $('.roommate#<%= @user.id %>')
+roommate.append("Chore Assigned!");
+
+
+  <% else %>
+console.log('it didnt work bro');
+<% end %>

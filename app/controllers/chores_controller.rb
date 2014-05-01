@@ -42,6 +42,22 @@ class ChoresController < ApplicationController
     @chore.destroy
   end
 
+  def drop_chore_assign
+    @chore = Chore.find(params[:chore_id])
+    @user = User.find(params[:user_id])
+    @buyer = current_user
+    if @chore.assign_drop_chore(@user, @buyer)
+      @it_worked = true
+    else
+      @it_worked = false
+    end
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @chore.to_json }
+      format.js { }
+    end
+  end
+
   def assign_chore
     @chore = Chore.find(params[:id])
     @user = current_user

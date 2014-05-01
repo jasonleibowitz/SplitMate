@@ -29,6 +29,8 @@ SplitmateApp::Application.routes.draw do
   get '/users/:id/makepayment' => 'users#make_payment'
   post '/users/:id/pay' => 'users#pay'
 
+  put '/dropchore' => 'chores#drop_chore_assign'
+
   root to: 'users#home'
 
 end

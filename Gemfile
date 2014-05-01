@@ -66,6 +66,8 @@ gem 'rails_12factor', group: :production
 
 ruby "2.1.0"
 
+gem 'jquery-ui-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -77,3 +79,5 @@ ruby "2.1.0"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+

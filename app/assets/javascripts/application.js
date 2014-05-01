@@ -14,5 +14,38 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
+//= require jquery.ui.all
+$(document).ready(function () {
+
+  console.log("loaded broseph");
+
+$(function() {
+    $( ".draggable" ).draggable({ revert: true });
+    $( ".droppable" ).droppable({
+      drop: function( event, ui ) {
+        var roommate_div = $(this);
+        $.ajax({
+          url: '/dropchore',
+          method: 'put',
+          data: {
+            chore_id: ui.draggable.attr('id'),
+            user_id: $(this).attr('id')
+          },
+          dataType: 'script'
+        }).done(function(data) {
+        console.log(data);
+       ui.draggable.empty();
+       roommate_div.parent().addClass("chore-dropped");
+       console.log('you dropped chore: ' + ui.draggable.attr('id'));
+       console.log('onto this user: ' + roommate_div.attr('id'));
+
+        }); // end .done
+
+      } //idk what this is
+    });
+  });
+
+});
+
 
 $(function(){ $(document).foundation(); });

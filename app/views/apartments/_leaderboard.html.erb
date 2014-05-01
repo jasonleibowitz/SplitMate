@@ -1,21 +1,21 @@
-<dl class="accordion" data-accordion>
-	<% i = 1 %>
-	<% @leaderboard.each do |roommate| %>
-  <dd>
-    <% if roommate.avatar_file_name == nil %>
-      <a href="#panel<%= i %>"><%= image_tag "#{roommate.default_avatar}" %>  <%= roommate.first_name %> <%= roommate.points_balance %></a>
-    <% else %>
-      <a href="#panel<%= i %>"><%= image_tag roommate.avatar.url(:thumb) %>  <%= roommate.first_name %> <%= roommate.points_balance %></a>
+  <dl class="accordion" data-accordion>
+  	<% i = 1 %>
+  	<% @leaderboard.each do |roommate| %>
+    <dd class="droppable roommate" id="<%= roommate.id %>">
+      <% if roommate.avatar_file_name == nil %>
+        <a href="#panel<%= i %>"><%= image_tag "#{roommate.default_avatar}" %>  <%= roommate.first_name %> <%= roommate.points_balance %></a>
+      <% else %>
+        <a href="#panel<%= i %>"><%= image_tag roommate.avatar.url(:thumb) %>  <%= roommate.first_name %> <%= roommate.points_balance %></a>
+      <% end %>
+      <div id="panel<%= i %>" class="content">
+        <ul>
+        	<% roommate.chores.each do |chore| %>
+        	<li><%= link_to chore.name, chore %> - <%= chore.points_value %></li>
+        	<% end %>
+        </ul>
+      </div>
+    </dd>
+    <% i+=1 %>
     <% end %>
-    <div id="panel<%= i %>" class="content">
-      <ul>
-      	<% roommate.chores.each do |chore| %>
-      	<li><%= link_to chore.name, chore %> - <%= chore.points_value %></li>
-      	<% end %>
-      </ul>
-    </div>
-  </dd>
-  <% i+=1 %>
-  <% end %>
-</dl>
+  </dl>
 

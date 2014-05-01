@@ -10,13 +10,9 @@
  *
  *= require_self
  *= require foundation_and_overrides
-
  *= require_tree .
+ *= require jquery.ui.all
  */
-
- /*
- */
-
  /**
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
@@ -202,4 +198,7 @@ h1.centered-text {
 
 img.logo {
   height: 100px;
+}
+.chore-dropped {
+  background-color: lightgreen;
 }
