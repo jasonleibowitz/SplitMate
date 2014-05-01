@@ -54,17 +54,6 @@ describe Chore do
 		expect(@vern.dollar_balance).to eq(2)
 		end
 
-		it "won't remove money from a user that is on vacation" do
-		@vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 10, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, dollar_balance: 4, vacation: true)
-
-		@ga = Apartment.create(name: "GA Speakeasy", street: '10 E 21st Street', apt: '4', zipcode: 10010)
-
-		@chore = Chore.new(name: "Clean the toilet", points_value: 2, user_id: @vern.id, apartment_id: @ga.id, due_date: Chronic.parse("yesterday"), dollar_value: 2)
-
-		@chore.overdue_chore?
-
-		expect(@vern.dollar_balance).to eq(4)
-		end
 	end
 
 
