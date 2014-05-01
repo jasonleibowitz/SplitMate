@@ -71,6 +71,7 @@ class UsersController < ApplicationController
     @user.points_lifetime = 0
     @user.completed_week_points = 0
     @user.total_week_points = 0
+    @user.dollar_balance = 0
     @user.admin = false
     @user.password = 'password'
     @user.password_confirmation = 'password'
