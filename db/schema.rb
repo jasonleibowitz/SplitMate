@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430151607) do
+ActiveRecord::Schema.define(version: 20140501214007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 20140430151607) do
     t.text     "comments"
     t.integer  "user_id"
     t.integer  "apartment_id"
+    t.integer  "chore_id"
     t.integer  "approval_points"
     t.integer  "approval_ratio"
-    t.integer  "chore_id"
     t.boolean  "approved"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140430151607) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "default_avatar"
+    t.boolean  "vacation"
   end
 
 end

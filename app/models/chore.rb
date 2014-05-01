@@ -32,7 +32,7 @@ class Chore < ActiveRecord::Base
   end
 
   def overdue_chore?
-    if self.current_due_date == Date.yesterday
+    if (self.current_due_date == Date.yesterday)
       @user = self.user
       @user.dollar_balance -= self.points_value
       @user.save!

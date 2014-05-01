@@ -33,4 +33,14 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def vacation_mode(value)
+    if value == true
+      self.vacation = true
+      self.save
+    elsif value == false
+      self.vacation = false
+      self.save
+    end
+  end
+
 end

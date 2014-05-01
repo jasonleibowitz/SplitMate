@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user.total_week_points = 0
     @user.admin = false
     @user.dollar_balance = 0
+    @user.vacation = false
     if @user.avatar_file_name == nil
       @user.default_avatar
     end
@@ -52,7 +53,20 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to @user
+    if params[:vacation] == "on"
+      @user.vacation_mode(true)
+      if @user.chores.length > 0
+        flash[:vacation] = "You have successfully turned vacation mode on. Don't forget to do your chores before you leave or you will be penalized."
+        redirect_to @user
+      else
+        flash[:vacation] = "You have successfully turned vacation mode on. Enjoy your trip!"
+        redirect_to @user
+      end
+    elsif params[:vacation] == "off"
+      @user.vacation_mode(false)
+      flash[:vacation] = "Vacation mode successfully turned off. Welcome home."
+      redirect_to @user
+    end
   end
 
   def destroy
@@ -95,19 +109,24 @@ class UsersController < ApplicationController
     @chore = Chore.find(params[:chore])
     @roommate = User.find(params[:roommate])
 
-    # Assign the chore to the chosen roommate
-    @chore.assign_chore(@roommate)
+    if @roommate.vacation = true
+      flash[:points_error] = "You cannot assign a chore to a roommate that is out of town."
+      render 'redeem_points'
+    else
+      # Assign the chore to the chosen roommate
+      @chore.assign_chore(@roommate)
 
-    # Remove possible points from this user's total week points
-    # and remove cost to reassign chore from user
-    @user.total_week_points -= @chore.points_value
-    @user.points_balance -= cost_key[params[:action]]
-    @user.save!
+      # Remove possible points from this user's total week points
+      # and remove cost to reassign chore from user
+      @user.total_week_points -= @chore.points_value
+      @user.points_balance -= cost_key[params[:action]]
+      @user.save!
 
-    # Send email to roommate letting them know they've been given a chore
-    UserMailer.chored(@roommate, @user, @chore).deliver
+      # Send email to roommate letting them know they've been given a chore
+      UserMailer.chored(@roommate, @user, @chore).deliver
 
-    redirect_to @user
+      redirect_to @user
+    end
   end
 
   def make_payment
