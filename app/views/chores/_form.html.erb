@@ -1,25 +1,40 @@
 <p> <%= flash[:error] %> </p>
 
 <%= form_for([@apartment, @chore]) do |f| %>
+<div class="row">
+  <div class="small-6 columns">
+    <% if @chore.errors.any? %>
+      <p>Please correct the following errors:</p>
+      <ul>
+        <% @chore.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
 
-  <% if @chore.errors.any? %>
-    <p>Please correct the following errors:</p>
-    <ul>
-      <% @chore.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+</div>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label :points_value %>
+    <%= f.number_field :points_value %>
 
-  <%= f.label :points_value %>
-  <%= f.number_field :points_value %>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label :due_date %>
+    <%= f.select :due_date, Date::DAYNAMES %>
 
-  <%= f.label :due_date %>
-  <%= f.select :due_date, Date::DAYNAMES %>
-
-  <%= f.submit :submit %>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.submit :submit %>
+  </div>
+</div>
 
 <% end %>
