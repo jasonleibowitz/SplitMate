@@ -23,6 +23,9 @@ SplitmateApp::Application.routes.draw do
   get '/users/:id/redeempoints' => 'users#redeem_points'
   post '/users/:id/spendpoints' => 'users#spendpoints'
 
+  get '/users/:id/makepayment' => 'users#make_payment'
+  post '/users/:id/pay' => 'users#pay'
+
   root to: 'users#index'
 
 end
