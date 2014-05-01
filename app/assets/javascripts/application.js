@@ -14,9 +14,19 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
+//= require jquery.ui.all
 $(document).ready(function () {
 
   console.log("loaded broseph");
+
+$(function() {
+    $( ".draggable" ).draggable();
+    $( ".droppable" ).droppable({
+      drop: function( event, ui ) {
+       console.log($(this));
+      }
+    });
+  });
 
 });
 

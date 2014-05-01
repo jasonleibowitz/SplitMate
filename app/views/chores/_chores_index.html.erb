@@ -1,17 +1,17 @@
-<% @chores.each do |chore| %>
-  <% if chore.user == nil %>
-    <%= content_tag_for(:div, chore) %>
-      <dl class="accordion" data-accordion>
-        <dd>
-          <a href="#panel<%= chore.id %>"><%= chore.name %> (<%= chore.points_value %>)</a>
-          <div id="panel<%= chore.id %>" class="content">
-            <p>Points: <%= chore.points_value %></p>
-            <p>Due: <%= chore.due_date %></p>
-            <p><%= link_to 'accept challenge', "/assignchore/#{chore.id}"  %></p>
-            <p><%= link_to 'edit chore', edit_chore_path(chore) %></p>
-          </div>
-        </dd>
-      </dl>
-  <% end %>
-<% end %>
 
+  <% @chores.each do |chore| %>
+    <% if chore.user == nil %>
+      <%= content_tag_for(:div, chore) %>
+        <dl class="accordion draggable" id="<%= dom_id(chore) %>" data-accordion>
+          <dd>
+            <a href="#panel<%= chore.id %>"><%= chore.name %> (<%= chore.points_value %>)</a>
+            <div id="panel<%= chore.id %>" class="content">
+              <p>Points: <%= chore.points_value %></p>
+              <p>Due: <%= chore.due_date %></p>
+              <p><%= link_to 'accept challenge', "/assignchore/#{chore.id}"  %></p>
+              <p><%= link_to 'edit chore', edit_chore_path(chore) %></p>
+            </div>
+          </dd>
+        </dl>
+    <% end %>
+  <% end %>
