@@ -1,7 +1,5 @@
-<div class="small-space"></div>
 <div class="row">
   <%= form_for @apartment do |f| %>
-
     <% if @apartment.errors.any? %>
       <p>Please correct the following errors:</p>
       <ul>
@@ -9,56 +7,59 @@
           <li><%= msg %></li>
         <% end %>
       </ul>
-    <% end %>
-
-    <div class="small-6 small-centered columns">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
+  <% end %>
 </div>
 
-  <div class="row">
-    <div class="small-6 small-centered columns">
-      <%= f.label :street %>
-      <%= f.text_field :street %>
-    </div>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
+</div>
 
-  <div class="row">
-    <div class="small-6 small-centered columns">
-      <%= f.label :apt %>
-      <%= f.text_field :apt %>
-    </div>
+
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label :street %>
+    <%= f.text_field :street %>
   </div>
+</div>
 
-  <div class="row">
-    <div class="small-6 small-centered columns">
-      <%= f.label :zipcode %>
-      <%= f.number_field :zipcode %>
-    </div>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label :apt %>
+    <%= f.text_field :apt %>
   </div>
+</div>
 
-  <div class="row">
-    <div class="small-6 small-centered columns">
-      <% if @apartment.chore_assignment_day != nil %>
-        <%= f.label :chore_assignment_day %>
-        <%= f.select :chore_assignment_day, Date::DAYNAMES %>
-      <% end %>
-    </div>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label :zipcode %>
+    <%= f.number_field :zipcode %>
   </div>
+</div>
 
-  <div class="row">
-    <div class="small-6 small-centered columns">
-      <%= f.label 'Apartment Image' %>
-      <%= f.file_field :avatar %>
-    </div>
+<div class="row">
+  <div class="small-6 columns">
+    <% if @apartment.chore_assignment_day != nil %>
+      <%= f.label :chore_assignment_day %>
+      <%= f.select :chore_assignment_day, Date::DAYNAMES %>
+    <% end %>
   </div>
+</div>
 
-  <div class="row">
-    <div class="small-6 small-centered columns">
-      <%= f.submit :submit %>
-    </div>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.label 'Apartment Image' %>
+    <%= f.file_field :avatar %>
   </div>
+</div>
 
-  <% end %>
+<div class="row">
+  <div class="small-6 columns">
+    <%= f.submit :submit %>
+  </div>
+</div>
+
+<% end %>
 

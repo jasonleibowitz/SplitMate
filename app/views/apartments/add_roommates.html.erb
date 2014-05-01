@@ -1,16 +1,37 @@
-<h1>Roommate <%= @num %>:</h1>
+<div class="row">
+  <div class="small-6 columns">
+		<h1>Roommate <%= @num %>:</h1>
+	</div>
+</div>
 
-<%= form_for @user, url: { action: "save_roommate", controller: "users" } do |f| %>
+	<%= form_for @user, url: { action: "save_roommate", controller: "users" } do |f| %>
 
-<%= f.label :first_name %>
-<%= f.text_field :first_name %>
+<div class="row">
+  <div class="small-6 columns">
+		<%= f.label :first_name %>
+		<%= f.text_field :first_name %>
+	</div>
+</div>
 
-<%= f.label :last_name %>
-<%= f.text_field :last_name %>
+<div class="row">
+  <div class="small-6 columns">
+		<%= f.label :last_name %>
+		<%= f.text_field :last_name %>
+	</div>
+</div>
 
-<%= f.label :email %>
-<%= f.text_field :email %>
+<div class="row">
+  <div class="small-6 columns">
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+</div>
 
-<%= f.submit :submit %>
+<div class="row">
+  <div class="small-6 columns">
+		<%= f.submit :submit %>
+	</div>
+</div>
 
-<% end %>
+	<% end %>
+

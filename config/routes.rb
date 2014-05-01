@@ -29,6 +29,6 @@ SplitmateApp::Application.routes.draw do
   get '/users/:id/makepayment' => 'users#make_payment'
   post '/users/:id/pay' => 'users#pay'
 
-  root to: 'users#index'
+  root to: 'sessions#new'
 
 end
