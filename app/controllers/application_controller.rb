@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_authorization
-    redirect_to current_user unless ( current_user == @user )
+    redirect_to current_user unless ( current_user.apartment.id == @apartment.id )
     flash[:authorization_error] = 'You do not have permission to view that page'
   end
 
