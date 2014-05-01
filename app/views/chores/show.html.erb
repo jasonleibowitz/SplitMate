@@ -11,7 +11,7 @@
   <div class="small-6 columns">
     <div class="avatar-wrap-left">
       <% if @chore.user.avatar_file_name == nil %>
-        <%= image_tag "#{roommate.default_avatar}", class: 'avatar' %>
+        <%= image_tag "#{@chore.user.default_avatar}", class: 'avatar' %>
       <% else %>
         <%= image_tag @chore.user.avatar.url(:medium), class: 'avatar' %>
       <% end %>
@@ -33,7 +33,7 @@
         <span class="meter" style="width: <%= @remaining_percentage %>%"></span>
       </div>
   <% end %>
-  
+
   </div>
   <!-- Remaining time bar end -->
 
