@@ -73,8 +73,8 @@ class Chore < ActiveRecord::Base
       user.total_week_points += self.points_value
       user.save!
     elsif user != buyer
-      if buyer.points_balance > self.points_value
-        buyer.points_balance -= self.points_value
+      if buyer.points_balance > (self.points_value * 10)
+        buyer.points_balance -= (self.points_value * 10)
         buyer.save!
 
         self.user = user

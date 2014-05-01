@@ -20,7 +20,7 @@ $(document).ready(function () {
   console.log("loaded broseph");
 
 $(function() {
-    $( ".draggable" ).draggable();
+    $( ".draggable" ).draggable({ revert: true });
     $( ".droppable" ).droppable({
       drop: function( event, ui ) {
         var roommate_div = $(this);
@@ -35,7 +35,6 @@ $(function() {
         }).done(function(data) {
         console.log(data);
        ui.draggable.empty();
-       roommate_div.append("Chore Assigned!");
        roommate_div.parent().addClass("chore-dropped");
        console.log('you dropped chore: ' + ui.draggable.attr('id'));
        console.log('onto this user: ' + roommate_div.attr('id'));

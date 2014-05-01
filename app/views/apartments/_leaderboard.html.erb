@@ -1,7 +1,7 @@
   <dl class="accordion" data-accordion>
   	<% i = 1 %>
   	<% @leaderboard.each do |roommate| %>
-    <dd class="droppable" id="<%= roommate.id %>">
+    <dd class="droppable roommate" id="<%= roommate.id %>">
       <% if roommate.avatar_file_name == nil %>
         <a href="#panel<%= i %>"><%= image_tag "#{roommate.default_avatar}" %>  <%= roommate.first_name %> <%= roommate.points_balance %></a>
       <% else %>
