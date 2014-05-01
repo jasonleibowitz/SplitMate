@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user.total_week_points = 0
     @user.admin = false
     @user.dollar_balance = 0
+    @user.vacation = false
     if @user.avatar_file_name == nil
       @user.default_avatar
     end

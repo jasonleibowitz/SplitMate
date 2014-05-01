@@ -1,11 +1,11 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/wdi/Documents/hedly/SplitMate/app/helpers/application_helper.rb": [
+      "/Users/jason/dev/splitmate_app/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/wdi/Documents/hedly/SplitMate/app/mailers/user_mailer.rb": [
+      "/Users/jason/dev/splitmate_app/app/mailers/user_mailer.rb": [
         1,
         1,
         null,
@@ -27,46 +27,46 @@
         0,
         0,
         0,
-        null,
-        null,
-        null
-      ],
-      "/Users/wdi/Documents/hedly/SplitMate/app/models/apartment.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        12,
-        0,
-        null,
-        null,
-        null,
-        1,
-        16,
-        16,
-        16,
-        16,
-        16,
-        16,
-        16,
-        16,
-        null,
         null,
         null,
         null
       ],
-      "/Users/wdi/Documents/hedly/SplitMate/app/models/approval.rb": [
+      "/Users/jason/dev/splitmate_app/app/models/apartment.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        13,
+        0,
+        null,
+        null,
+        null,
+        1,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/jason/dev/splitmate_app/app/models/approval.rb": [
         1,
         null,
         1,
@@ -104,7 +104,7 @@
         null,
         null
       ],
-      "/Users/wdi/Documents/hedly/SplitMate/app/models/chore_history.rb": [
+      "/Users/jason/dev/splitmate_app/app/models/chore_history.rb": [
         1,
         null,
         1,
@@ -152,7 +152,7 @@
         null,
         null
       ],
-      "/Users/wdi/Documents/hedly/SplitMate/app/models/chore.rb": [
+      "/Users/jason/dev/splitmate_app/app/models/chore.rb": [
         1,
         null,
         1,
@@ -187,13 +187,13 @@
         null,
         null,
         1,
+        2,
         1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
         null,
@@ -202,6 +202,8 @@
         1,
         1,
         1,
+        null,
+        null,
         1,
         1,
         1,
@@ -221,7 +223,7 @@
         null,
         null
       ],
-      "/Users/wdi/Documents/hedly/SplitMate/app/models/user.rb": [
+      "/Users/jason/dev/splitmate_app/app/models/user.rb": [
         1,
         null,
         1,
@@ -255,11 +257,21 @@
         null,
         1,
         1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1398981828
+    "timestamp": 1398982978
   }
 }
