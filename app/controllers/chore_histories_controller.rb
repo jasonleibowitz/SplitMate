@@ -17,25 +17,7 @@ class ChoreHistoriesController < ApplicationController
     @comments = params[:comments]
     @user = @chore.user
 
-    # Give user points for completing chore
-    @user.update_points(@chore.points_value)
-    @user.save!
-
-    # If chore had money value, give user that amount and remove it from the chore object
-    if @chore.dollar_value == 0
-      @user.dollar_balance += @chore.dollar_value
-      @user.save!
-      @chore.dollar_value = 0
-      @chore.save!
-    end
-
-    # Mark chore as unassigned
-    @chore.user = nil
-    @chore.save!
-
-    # Mark chore's current_due_date as nil
-    @chore.current_due_date = nil
-    @chore.save!
+    @chore.complete_chore(@comments)
 
     # Create new chore history object
     @chore_history = ChoreHistory.new(chore_hist_params)
