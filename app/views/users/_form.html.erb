@@ -40,6 +40,17 @@
   </div>
 </div>
 
+<% unless @user.apartment == nil %>
+  <div class="row">
+    <div class="large-6 columns">
+      <label>Vacation Mode:</label>
+      <input type="radio" name="vacation" value="on" id="vacation-on"><label for="vacation-on">On</label>
+      <input type="radio" name="vacation" value="off" id="vacation-off"><label for="vacation-off">Off</label>
+    </div>
+  </div>
+<% end %>
+
+
 
 <div class="row">
   <div class="small-6 columns">
