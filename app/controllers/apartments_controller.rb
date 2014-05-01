@@ -5,10 +5,12 @@ class ApartmentsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @apartment = Apartment.find(params[:id])
     @roommates = @apartment.users
     @leaderboard = @apartment.users.order(points_balance: :desc)
     @chores = @apartment.chores.order(points_value: :desc)
+    @completed_chores = ChoreHistory.last_week.order(created_at: :desc)
   end
 
   def new

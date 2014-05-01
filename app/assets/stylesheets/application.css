@@ -14,6 +14,10 @@
  *= require_tree .
  */
 
+ /*
+ *= require font-awesome
+ */
+
  /**
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
@@ -34,6 +38,36 @@
  *    `:before` to contain the top-margins of child elements.
  */
 
+
+.voting-container img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ }
+
+ div.vote-item {
+  padding: 12px 0px 12px 10px;
+  background-color: #efefef;
+  display:block;
+  overflow:auto;
+  vertical-align: middle;
+ }
+
+ div.vote-button {
+  width: 40px;
+  float: right;
+  text-align: right;
+  overflow: hidden;
+  margin: 0 auto;
+  line-height: 10px;
+  text-align: center;
+  vertical-align: middle;
+ }
+
+.vote-button img {
+  width: 24px;
+  height: 24px;
+}
 
  .accordion img {
   width: 50px;
@@ -130,9 +164,6 @@ div.red {
 table {
   margin: 0 auto;
 }
-.small-space {
-  margin-bottom: 20px;
-}
 
 .small-space {
   margin-bottom: 40px;
@@ -156,4 +187,12 @@ h1.centered-text {
   height: 200px;
 }
 
+.approved {
+  font-size: 12px;
+  color: green;
+}
 
+.rejected {
+  font-size: 12px;
+  color: red;
+}
