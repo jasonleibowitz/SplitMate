@@ -37,6 +37,7 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'shoulda-matchers'
+  gem "shoulda-callback-matchers", "~> 1.0"
 end
 
 group :development do

@@ -1,0 +1,29 @@
+<% approval_for_chore = current_user.approvals.find_by(chore_history: chore) %>
+<% if approval_for_chore && approval_for_chore.value == 1 %>
+	<% chore_approval_class = "upvoted" %>
+<% elsif approval_for_chore && approval_for_chore.value == -1 %>
+	<% chore_approval_class = "downvoted" %>
+<% else %>
+	<% chore_approval_class = "unvoted" %>
+<% end %>
+
+		
+<div class="vote-item <%= chore_approval_class %>" id="<%= dom_id(chore, "approval") %>">
+	 <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>">
+	 	<%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   
+	 </a> 
+	 <span id="chore-points-<%=chore.id%>">
+	 	<%= chore.approval_points %>
+	 </span> 	 	 
+	 <%= form_for Approval.new, remote: true do |f| %>
+	   <%= f.hidden_field :chore_history_id, value: chore.id %>
+	   <%= f.hidden_field :value, value: 1 %>
+	   <%= f.submit "Upvote" %>
+   <% end %>
+ 	 <%= form_for Approval.new, remote: true do |f| %>
+	   <%= f.hidden_field :chore_history_id, value:  chore.id %>
+	   <%= f.hidden_field :value, value:  -1 %>
+	   <%= f.submit "Downvote" %>
+   <% end %>
+
+</div>	   		 

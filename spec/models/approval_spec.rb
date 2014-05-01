@@ -7,6 +7,7 @@ describe Approval do
   # need to install callback shoulda matchers before this will pass
 	it { should callback(:calculate_score).after(:save) }
   it { should callback(:check_ratio).after(:save) }
+  it { should callback(:unique_approval_checker).after(:create) }
 
 
 	 before :each do
@@ -51,6 +52,23 @@ describe Approval do
       expect(@windex_peephole.approval_points).to eq(2)
       expect(@windex_peephole.approvals.length).to eq(4)
       expect(@windex_peephole.approval_ratio).to eq(50)
+    end
+  end
+
+  describe "#unique_approval_checker" do
+    it "it makes sure there is only approval ticket for a user per chore_history, and if not, rejects new approvals" do
+
+      expect(@windex_peephole.approval_points).to eq(0)
+
+      @approval_1 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+      @approval_2 = Approval.create(user_id: @jason.id, chore_history_id: @windex_peephole.id, value: 1)
+
+      @windex_peephole.reload
+      @jason.reload
+
+      expect(@windex_peephole.approval_points).to eq(1)
+      expect(@jason.approvals.length).to eq(1)
+      expect(@windex_peephole.approvals.length).to eq(1)
     end
   end
 

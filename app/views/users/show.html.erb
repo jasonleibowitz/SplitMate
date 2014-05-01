@@ -58,7 +58,7 @@
         <tbody>
           <% @sorted_chore_histories.each do |chore_history| %>
           <tr>
-            <td><%= chore_history.name  %></td>
+            <td><%= link_to chore_history.name, chore_history  %></td>
             <td><%= chore_history.points_value %></td>
             <td><%= chore_history.created_at.strftime "%b %e, %Y" %>
             </td>

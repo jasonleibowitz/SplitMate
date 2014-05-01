@@ -14,6 +14,9 @@ SplitmateApp::Application.routes.draw do
   get '/assignchore/:id/' => 'chores#assign_chore'
   get '/completeddetails/:id' => 'chores#chore_completed_details'
   post '/chores/completechore' => 'chores#complete_chore'
+  post '/approvals' => 'approvals#create'
+  put '/approvals' => 'approvals#update'
+  delete '/approvals' => 'approvals#destroy'
 
   root to: 'users#index'
 

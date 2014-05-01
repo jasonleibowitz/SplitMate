@@ -21,18 +21,19 @@
   <div class="small-4 small columns">
     <h3 class="apt-header">Chore Marketplace</h3>
     <hr>
-    <%= link_to 'Create a Chore', new_apartment_chore_path(@apartment), class: 'button tiny' %>
     <%= render :partial => '/chores/chores_index' %>
+    <%= link_to 'Create a Chore', new_apartment_chore_path(@apartment), class: 'button tiny' %>
   </div>
   <div class="small-4 columns">
     <h3 class="apt-header">Leaderboard</h3>
     <hr>
-    <%= link_to 'Add a Roommate', new_apartment_chore_path(@apartment), class: 'button tiny' %>
     <%= render 'leaderboard' %>
+    <%= link_to 'Add a Roommate', new_apartment_chore_path(@apartment), class: 'button tiny' %>
   </div>
   <div class="small-4 columns">
     <h3 class="apt-header">Voting</h3>
     <hr>
+    <%= render 'voting' %>
   </div>
 </div>
 <div class="row">
