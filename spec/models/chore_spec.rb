@@ -27,5 +27,4 @@ describe Chore do
 		end
 	end
 
-
 end
