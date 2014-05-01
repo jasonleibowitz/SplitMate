@@ -19,6 +19,8 @@
 	 <div class="vote-button">
 		<%= image_tag("voted-icon-24.png") %>
 	</div>
+		 <% else if chore.user == current_user %>
+		
 		 <% else %>
 		 <div class="vote-button"> 
 	   <%= form_tag("/approvals", method: "post", remote: true) do %>
