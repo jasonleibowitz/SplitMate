@@ -11,9 +11,9 @@
 
 	 <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>">
 	 	<% if chore.user.avatar_file_name == nil %>
-      <%= image_tag chore.user.default_avatar, class: 'avatar' %> <%= chore.name %>
+      <%= image_tag chore.user.default_avatar %> <%= chore.name %>
     <% else %>
-      <%= image_tag chore.user.avatar.url(:thumb), class: 'avatar' %> <%= chore.name %>
+      <%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>
     <% end %>
 	 </a>
 	 <span id="chore-points-<%=chore.id%>">
