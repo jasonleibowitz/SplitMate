@@ -123,6 +123,16 @@ class UsersController < ApplicationController
 
   end
 
+  def home
+    if current_user && current_user.apartment != nil
+      redirect_to current_user.apartment
+    elsif current_user && current_user.apartment == nil
+      redirect_to current_user
+    else
+      redirect_to login_path
+    end
+  end
+
 
   private
   def user_params

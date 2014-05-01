@@ -6,12 +6,16 @@
 <% else %>
 	<% chore_approval_class = "unvoted" %>
 <% end %>
-		
+
 <div class="vote-item <%= chore_approval_class %>" id="<%= dom_id(chore, "approval") %>">
 
 	 <a href="/chore_histories/<%= chore.id %>" id="comp-chore-<%=chore.id%>">
-	 	<%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>   
-	 </a> 
+	 	<% if chore.user.avatar_file_name == nil %>
+      <%= image_tag chore.user.default_avatar %> <%= chore.name %>
+    <% else %>
+      <%= image_tag chore.user.avatar.url(:thumb) %> <%= chore.name %>
+    <% end %>
+	 </a>
 	 <span id="chore-points-<%=chore.id%>">
 	 	 <%= chore.approval_points %> Pts.
 
@@ -34,14 +38,14 @@
 		 <% end %>
 		</div>
 
-	 <% end %> 
+	 <% end %>
 
-	 
 
-	 </span> 	 	 
+
+	 </span>
 		<% if !chore.approved %>
 		<br>
 			<span class="rejected">[Chore Rejected]</span>
 		<% end %>
 
-</div>	   		 
+</div>
