@@ -199,3 +199,7 @@ h1.centered-text {
 .red-text {
   color: red;
 }
+
+img.logo {
+  height: 100px;
+}
