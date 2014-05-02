@@ -53,5 +53,15 @@ describe User do
     end
   end
 
+  describe "#vacation_mode" do
+    it "should not allow chores to be assigned to users on vacation mode" do
+      @vern = User.create(first_name: "Verner", last_name: "Dsouza", email: 'verner@splitmate.com', password: '12345', password_confirmation: '12345', points_balance: 0, points_lifetime: 0, completed_week_points: 0, total_week_points: 0, dollar_balance: 10, vacation: false)
+
+      @vern.vacation_mode(true)
+
+      expect(@vern.vacation).to eq(true)
+    end
+  end
+
 end
 
