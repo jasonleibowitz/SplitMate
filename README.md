@@ -52,7 +52,7 @@ This project was built by the following team members during [General Assembly](h
 	* [RSpec](https://github.com/rspec/rspec-rails)
 	* [Should-Matchers](https://github.com/thoughtbot/shoulda-matchers)
 	* [SimpleCov](https://github.com/colszowka/simplecov)
-		* Testing Coverage: **81%**
+		* Testing Coverage: **93%**
 * Core Technologies
 	* [Ruby on Rails](http://rubyonrails.org/)
 	* [PostgreSQL](http://www.postgresql.org/)
