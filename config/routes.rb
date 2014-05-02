@@ -31,6 +31,8 @@ SplitmateApp::Application.routes.draw do
 
   put '/dropchore' => 'chores#drop_chore_assign'
 
+  get '/about' => 'sessions#about'
+
   root to: 'users#home'
 
 end
