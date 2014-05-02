@@ -36,6 +36,8 @@ Coming Soon.
 ### Technologies Used
 
 * APIs
+	* [Google Maps Image API](https://developers.google.com/maps/documentation/imageapis/)
+	* [Google Maps API Web Services](https://developers.google.com/maps/documentation/webservices/)
 * Gems
 	* [Paperclip](https://github.com/thoughtbot/paperclip)
 	* [Figaro](https://github.com/laserlemon/figaro)
@@ -43,8 +45,10 @@ Coming Soon.
 * Testing Platforms
 	* [RSpec](https://github.com/rspec/rspec-rails)
 	* [Should-Matchers](https://github.com/thoughtbot/shoulda-matchers)
-	* [Capybara](https://github.com/jnicklas/capybara)
-	* [Jasmine](http://jasmine.github.io/)
+	* [SimpleCov](https://github.com/colszowka/simplecov)
+		* Testing Coverage: **81%**
 * Core Technologies
 	* [Ruby on Rails](http://rubyonrails.org/)
 	* [PostgreSQL](http://www.postgresql.org/)
+	* [jQuery](http://jquery.com/)
+	* [jQuery UI](http://jqueryui.com/)
