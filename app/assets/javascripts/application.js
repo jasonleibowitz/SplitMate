@@ -20,7 +20,7 @@ $(document).ready(function () {
   console.log("loaded broseph");
 
 $(function() {
-    $( ".draggable" ).draggable({ revert: true });
+    $( ".draggable" ).draggable({ revert: true }, {stack: ".droppable"});
     $( ".droppable" ).droppable({
       drop: function( event, ui ) {
         var roommate_div = $(this);
@@ -35,7 +35,7 @@ $(function() {
         }).done(function(data) {
         console.log(data);
        ui.draggable.empty();
-       roommate_div.parent().addClass("chore-dropped");
+
        console.log('you dropped chore: ' + ui.draggable.attr('id'));
        console.log('onto this user: ' + roommate_div.attr('id'));
 
@@ -44,6 +44,7 @@ $(function() {
       } //idk what this is
     });
   });
+
 
 });
 
