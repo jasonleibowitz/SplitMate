@@ -54,21 +54,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    if params[:vacation] == "on"
-      @user.vacation_mode(true)
-      if @user.chores.length > 0
-        flash[:vacation] = "You have successfully turned vacation mode on. Don't forget to do your chores before you leave or you will be penalized."
-        redirect_to @user
-      else
-        flash[:vacation] = "You have successfully turned vacation mode on. Enjoy your trip!"
-        redirect_to @user
-      end
-    elsif params[:vacation] == "off"
-      @user.vacation_mode(false)
-      flash[:vacation] = "Vacation mode successfully turned off. Welcome home."
-      redirect_to @user
-    end
+    # @user.update(user_params)
+    # if params[:vacation] == "on"
+    #   @user.vacation_mode(true)
+    #   if @user.chores.length > 0
+    #     flash[:vacation] = "You have successfully turned vacation mode on. Don't forget to do your chores before you leave or you will be penalized."
+    #     redirect_to @user
+    #   else
+    #     flash[:vacation] = "You have successfully turned vacation mode on. Enjoy your trip!"
+    #     redirect_to @user
+    #   end
+    # elsif params[:vacation] == "off"
+    #   @user.vacation_mode(false)
+    #   flash[:vacation] = "Vacation mode successfully turned off. Welcome home."
+    #   redirect_to @user
+    # end
+    render text: params.inspect
   end
 
   def destroy
