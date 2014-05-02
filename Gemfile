@@ -58,7 +58,7 @@ gem 'foundation-rails'
 
 gem 'area'
 
-gem 'aws-sdk', '~> 1.5.7'
+gem 'aws-sdk'
 
 gem 'simplecov', :require => false, :group => :test
 
