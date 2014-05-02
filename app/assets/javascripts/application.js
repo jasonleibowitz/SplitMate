@@ -20,7 +20,7 @@ $(document).ready(function () {
   console.log("loaded broseph");
 
 $(function() {
-    $( ".draggable" ).draggable({ revert: true });
+    $( ".draggable" ).draggable({ revert: true }, {stack: ".droppable"});
     $( ".droppable" ).droppable({
       drop: function( event, ui ) {
         var roommate_div = $(this);
@@ -44,6 +44,7 @@ $(function() {
       } //idk what this is
     });
   });
+
 
 });
 

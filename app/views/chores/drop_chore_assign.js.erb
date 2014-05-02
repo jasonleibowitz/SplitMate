@@ -1,13 +1,60 @@
 
 <% if @it_worked == true %>
 console.log('we just dropped a new chore bro');
-var roommate = $('.roommate#<%= @user.id %>')
-roommate.empty()
+var roommate = $('.roommate#<%= @user.id %>');
+var buyer = $('.roommate#<%= @buyer.id %>');
 var updatedRoommate = "<%= j render(partial: '/apartments/leader_item', locals: {roommate: @user, i: 1})%>"
+var updatedBuyer = "<%= j render(partial: '/apartments/leader_item', locals: {roommate: @buyer, i: 1})%>"
+buyer.replaceWith(updatedBuyer);
 roommate.replaceWith(updatedRoommate);
 var new_div = $('<div class="chore-dropped">Chore Added</div>')
 var roommate = $('.roommate#<%= @user.id %>')
+var buyer = $('.roommate#<%= @buyer.id %>');
 roommate.append(new_div);
+roommate.droppable({
+      drop: function( event, ui ) {
+        var roommate_div = $(this);
+        $.ajax({
+          url: '/dropchore',
+          method: 'put',
+          data: {
+            chore_id: ui.draggable.attr('id'),
+            user_id: $(this).attr('id')
+          },
+          dataType: 'script'
+        }).done(function(data) {
+        console.log(data);
+       ui.draggable.empty();
+
+       console.log('you dropped chore: ' + ui.draggable.attr('id'));
+       console.log('onto this user: ' + roommate_div.attr('id'));
+
+        }); // end .done
+
+      } //idk what this is
+    });
+buyer.droppable({
+      drop: function( event, ui ) {
+        var roommate_div = $(this);
+        $.ajax({
+          url: '/dropchore',
+          method: 'put',
+          data: {
+            chore_id: ui.draggable.attr('id'),
+            user_id: $(this).attr('id')
+          },
+          dataType: 'script'
+        }).done(function(data) {
+        console.log(data);
+       ui.draggable.empty();
+
+       console.log('you dropped chore: ' + ui.draggable.attr('id'));
+       console.log('onto this user: ' + roommate_div.attr('id'));
+
+        }); // end .done
+
+      } //idk what this is
+    });
   <% else %>
 console.log('it didnt work bro');
 <% end %>
