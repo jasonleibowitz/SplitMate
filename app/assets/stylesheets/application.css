@@ -202,3 +202,19 @@ img.logo {
 .chore-dropped {
   background-color: lightgreen;
 }
+
+.grey-wrap {
+  background-color: RGBa(215, 215, 215, .8);
+  border-radius: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+body.about {
+  background-image:url('/assets/aboutbg.png');
+  background-size: cover;
+}
+
+.white-text {
+  color: white;
+}
