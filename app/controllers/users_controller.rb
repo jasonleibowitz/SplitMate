@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    require_usershow_authorization
+    unless current_user == @user
+      require_usershow_authorization
+    end
     @chores = @user.chores
     # @completed_chores = @user.chore_histories
     @sorted_chore_histories = @user.chore_histories.order(created_at: :desc)
