@@ -211,7 +211,8 @@ img.logo {
 }
 
 body.about {
-  background-image:url('/assets/aboutbg.png');
+  /*background-image:url('/assets/aboutbg.png');*/
+  background-image:url('http://i.imgur.com/UaHFsAV.jpg');
   background-size: cover;
 }
 
